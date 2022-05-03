@@ -159,8 +159,11 @@ Use second-level and higher headings within chapters like: \texttt{\#\#\ A\ shor
 
 The \texttt{index.Rmd} file is required, and is also your first book chapter. It will be the homepage when you render the book.
 
-\hypertarget{hello-bookdown}{%
-\chapter{Hello bookdown}\label{hello-bookdown}}
+\hypertarget{part-duxe9buter-avec-r}{%
+\part{Débuter avec R}\label{part-duxe9buter-avec-r}}
+
+\hypertarget{intro1}{%
+\chapter{Introduction}\label{intro1}}
 
 All chapters start with a first-level heading followed by your chapter title, like the line above. There should be only one first-level heading (\texttt{\#}) per .Rmd file.
 
@@ -175,13 +178,13 @@ All chapter sections start with a second-level (\texttt{\#\#}) or higher heading
 
 Chapters and sections are numbered by default. To un-number a heading, add a \texttt{\{.unnumbered\}} or the shorter \texttt{\{-\}} at the end of the heading, like in this section.
 
-\hypertarget{cross}{%
-\chapter{Cross-references}\label{cross}}
+\hypertarget{base}{%
+\chapter{Bases de R}\label{base}}
 
 Cross-references make it easier for your readers to find and link to elements in your book.
 
-\hypertarget{chapters-and-sub-chapters}{%
-\section{Chapters and sub-chapters}\label{chapters-and-sub-chapters}}
+\hypertarget{interface}{%
+\section{Interface}\label{interface}}
 
 There are two steps to cross-reference any heading:
 
@@ -208,8 +211,8 @@ There are two steps to cross-reference any heading:
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{captioned-figures-and-tables}{%
-\section{Captioned figures and tables}\label{captioned-figures-and-tables}}
+\hypertarget{firstcode}{%
+\section{Premiers codes}\label{firstcode}}
 
 Figures and tables \emph{with captions} can also be cross-referenced from elsewhere in your book using \texttt{\textbackslash{}@ref(fig:chunk-label)} and \texttt{\textbackslash{}@ref(tab:chunk-label)}, respectively.
 
@@ -224,7 +227,7 @@ See Figure \ref{fig:nice-fig}.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{02-cross-refs_files/figure-latex/nice-fig-1} 
+{\centering \includegraphics[width=0.8\linewidth]{02-bases-R_files/figure-latex/nice-fig-1} 
 
 }
 
@@ -264,6 +267,33 @@ temperature & pressure\\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\hypertarget{data-R}{%
+\section{Données sur R}\label{data-R}}
+
+\hypertarget{vecteur}{%
+\subsection{Vecteur}\label{vecteur}}
+
+\hypertarget{facteur}{%
+\subsection{Facteur}\label{facteur}}
+
+\hypertarget{liste}{%
+\subsection{Liste}\label{liste}}
+
+\hypertarget{matrice}{%
+\subsection{Matrice}\label{matrice}}
+
+\hypertarget{tableau}{%
+\subsection{Tableau}\label{tableau}}
+
+\hypertarget{tableau-de-donnuxe9es-ou-data-frame}{%
+\subsection{Tableau de données ou Data frame}\label{tableau-de-donnuxe9es-ou-data-frame}}
+
+\hypertarget{les-boucles}{%
+\section{Les boucles}\label{les-boucles}}
+
+\hypertarget{les-fonctions}{%
+\section{Les fonctions}\label{les-fonctions}}
 
 \hypertarget{parts}{%
 \chapter{Parts}\label{parts}}
