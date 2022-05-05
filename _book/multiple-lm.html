@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>1 Introduction | R pour l’économétrie</title>
+<title>4 La régression linéaire multiple | R pour l’économétrie</title>
 <meta name="author" content="Abdoul Oudouss Diakite">
-<meta name="description" content="R est un langage de programmation créé par les staticiens Ross Ihaka et Robert Gentleman. C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au...">
+<meta name="description" content="4.1 Footnotes Footnotes are put inside the square brackets after a caret ^[]. Like this one.3  4.2 Citations Reference items in your bibliography file(s) using @key. For example, we are using the...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="1 Introduction | R pour l’économétrie">
+<meta property="og:title" content="4 La régression linéaire multiple | R pour l’économétrie">
 <meta property="og:type" content="book">
-<meta property="og:description" content="R est un langage de programmation créé par les staticiens Ross Ihaka et Robert Gentleman. C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au...">
+<meta property="og:description" content="4.1 Footnotes Footnotes are put inside the square brackets after a caret ^[]. Like this one.3  4.2 Citations Reference items in your bibliography file(s) using @key. For example, we are using the...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1 Introduction | R pour l’économétrie">
+<meta name="twitter:title" content="4 La régression linéaire multiple | R pour l’économétrie">
 <meta name="twitter:site" content="@abdouloudouss">
-<meta name="twitter:description" content="R est un langage de programmation créé par les staticiens Ross Ihaka et Robert Gentleman. C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au...">
+<meta name="twitter:description" content="4.1 Footnotes Footnotes are put inside the square brackets after a caret ^[]. Like this one.3  4.2 Citations Reference items in your bibliography file(s) using @key. For example, we are using the...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -68,11 +68,11 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Bienvenue</a></li>
 <li class="book-part">I-Débuter avec R</li>
-<li><a class="active" href="intro1.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="" href="intro1.html"><span class="header-section-number">1</span> Introduction</a></li>
 <li><a class="" href="base.html"><span class="header-section-number">2</span> les bases</a></li>
 <li class="book-part">II-Regressions</li>
 <li><a class="" href="simple-lm.html"><span class="header-section-number">3</span> La régression linéaire simple</a></li>
-<li><a class="" href="multiple-lm.html"><span class="header-section-number">4</span> La régression linéaire multiple</a></li>
+<li><a class="active" href="multiple-lm.html"><span class="header-section-number">4</span> La régression linéaire multiple</a></li>
 <li><a class="" href="glm.html"><span class="header-section-number">5</span> Le modèle linéaire généralisé</a></li>
 <li><a class="" href="anova1.html"><span class="header-section-number">6</span> Analyse de la variance à un facteur</a></li>
 <li><a class="" href="anova2.html"><span class="header-section-number">7</span> Analyse de la variance à deux facteurs</a></li>
@@ -91,29 +91,44 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro1" class="section level1" number="1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="multiple-lm" class="section level1" number="4">
 <h1>
-<span class="header-section-number">1</span> Introduction<a class="anchor" aria-label="anchor" href="#intro1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4</span> La régression linéaire multiple<a class="anchor" aria-label="anchor" href="#multiple-lm"><i class="fas fa-link"></i></a>
 </h1>
-<p>R est un langage de programmation créé par les staticiens <a href="https://en.wikipedia.org/wiki/Ross_Ihaka">Ross Ihaka</a> et <a href="https://en.wikipedia.org/wiki/Robert_Gentleman_(statistician)">Robert Gentleman</a>.
-C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au traitement et manipulation de données. C’est aussi un logiciel à accès libre (open-source) disponible sous la licence publique générale GNU (<a href="https://en.wikipedia.org/wiki/GNU_General_Public_License">GNU General Public License</a>).</p>
-<p>Principalement écrit en <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> et <a href="https://en.wikipedia.org/wiki/Fortran">Fortran</a>, R est une implémentation du langage <a href="https://en.wikipedia.org/wiki/S_(programming_language)">S</a> qui supporte plusieurs paradigmes de programmation tel que : procédural, orienté objet, fonctionnel, réflexif, impératif, tableau.</p>
-<p>Depuis sa création, le langage a fortement évolué grâce à la contribution de sa communauté d’utilisateurs notamment par la publications de packages et de tutoriels. Cette évolution a permis d’étendre les fonctionnalités de ce langage à la rédaction d’ouvrage avec <a href="https://bookdown.org/">bookdown</a>, d’article et de présentations avec <a href="https://rmarkdown.rstudio.com/">R markdown</a>, à la représentation graphique avec <a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">ggplot2</a> etc.
-Rien que sur le CRAN (Comprehensive R Archive Network) on peut trouver plus de 1800 packages.</p>
-<p>Dans le chapitre suivant nous allons voir les bases de la programmation avec R en utilisant le logiciel <a href="https://www.rstudio.com/">RStudio</a>.</p>
+<div id="footnotes" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> Footnotes<a class="anchor" aria-label="anchor" href="#footnotes"><i class="fas fa-link"></i></a>
+</h2>
+<p>Footnotes are put inside the square brackets after a caret <code>^[]</code>. Like this one.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This is a footnote.&lt;/p&gt;"><sup>3</sup></a></p>
+</div>
+<div id="citations" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> Citations<a class="anchor" aria-label="anchor" href="#citations"><i class="fas fa-link"></i></a>
+</h2>
+<p>Reference items in your bibliography file(s) using <code>@key</code>.</p>
+<p>For example, we are using the <strong>bookdown</strong> package<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Yihui Xie, &lt;em&gt;Bookdown: Authoring Books and Technical Documents with r Markdown&lt;/em&gt;, 2022, &lt;a href="https://CRAN.R-project.org/package=bookdown" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=bookdown&lt;/a&gt;.&lt;/p&gt;'><sup>4</sup></a></span> (check out the last code chunk in index.Rmd to see how this citation key was added) in this sample book, which was built on top of R Markdown and <strong>knitr</strong><span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Yihui Xie, &lt;em&gt;Dynamic Documents with &lt;span&gt;R&lt;/span&gt; and Knitr&lt;/em&gt;, 2nd ed. (Boca Raton, Florida: Chapman; Hall/CRC, 2015), &lt;a href="http://yihui.org/knitr/" role="doc-biblioref"&gt;http://yihui.org/knitr/&lt;/a&gt;.&lt;/p&gt;'><sup>5</sup></a></span> (this citation was added manually in an external file book.bib).
+Note that the <code>.bib</code> files need to be listed in the index.Rmd with the YAML <code>bibliography</code> key.</p>
+<p>The <code>bs4_book</code> theme makes footnotes appear inline when you click on them. In this example book, we added <code>csl: chicago-fullnote-bibliography.csl</code> to the <code>index.Rmd</code> YAML, and include the <code>.csl</code> file. To download a new style, we recommend: <a href="https://www.zotero.org/styles/" class="uri">https://www.zotero.org/styles/</a></p>
+<p>The RStudio Visual Markdown Editor can also make it easier to insert citations: <a href="https://rstudio.github.io/visual-markdown-editing/#/citations" class="uri">https://rstudio.github.io/visual-markdown-editing/#/citations</a></p>
 
 </div>
+</div>
+
   <div class="chapter-nav">
-<div class="prev"><a href="index.html">Bienvenue</a></div>
-<div class="next"><a href="base.html"><span class="header-section-number">2</span> les bases</a></div>
+<div class="prev"><a href="simple-lm.html"><span class="header-section-number">3</span> La régression linéaire simple</a></div>
+<div class="next"><a href="glm.html"><span class="header-section-number">5</span> Le modèle linéaire généralisé</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#intro1"><span class="header-section-number">1</span> Introduction</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#multiple-lm"><span class="header-section-number">4</span> La régression linéaire multiple</a></li>
+<li><a class="nav-link" href="#footnotes"><span class="header-section-number">4.1</span> Footnotes</a></li>
+<li><a class="nav-link" href="#citations"><span class="header-section-number">4.2</span> Citations</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/AODiakite/r4econometrics/blob/master/01-Start-R.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/AODiakite/r4econometrics/edit/master/01-Start-R.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/AODiakite/r4econometrics/blob/master/04-multiple-lm.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/AODiakite/r4econometrics/edit/master/04-multiple-lm.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

@@ -159,144 +159,562 @@ Use second-level and higher headings within chapters like: \texttt{\#\#\ A\ shor
 
 The \texttt{index.Rmd} file is required, and is also your first book chapter. It will be the homepage when you render the book.
 
-\hypertarget{part-duxe9buter-avec-r}{%
-\part{Débuter avec R}\label{part-duxe9buter-avec-r}}
+\hypertarget{part-i-duxe9buter-avec-r}{%
+\part{I-Débuter avec R}\label{part-i-duxe9buter-avec-r}}
 
 \hypertarget{intro1}{%
 \chapter{Introduction}\label{intro1}}
 
-All chapters start with a first-level heading followed by your chapter title, like the line above. There should be only one first-level heading (\texttt{\#}) per .Rmd file.
+R est un langage de programmation créé par les staticiens \href{https://en.wikipedia.org/wiki/Ross_Ihaka}{Ross Ihaka} et \href{https://en.wikipedia.org/wiki/Robert_Gentleman_(statistician)}{Robert Gentleman}.
+C'est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au traitement et manipulation de données. C'est aussi un logiciel à accès libre (open-source) disponible sous la licence publique générale GNU (\href{https://en.wikipedia.org/wiki/GNU_General_Public_License}{GNU General Public License}).
 
-\hypertarget{a-section}{%
-\section{A section}\label{a-section}}
+Principalement écrit en \href{https://en.wikipedia.org/wiki/C_(programming_language)}{C} et \href{https://en.wikipedia.org/wiki/Fortran}{Fortran}, R est une implémentation du langage \href{https://en.wikipedia.org/wiki/S_(programming_language)}{S} qui supporte plusieurs paradigmes de programmation tel que : procédural, orienté objet, fonctionnel, réflexif, impératif, tableau.
 
-All chapter sections start with a second-level (\texttt{\#\#}) or higher heading followed by your section title, like the sections above and below here. You can have as many as you want within a chapter.
+Depuis sa création, le langage a fortement évolué grâce à la contribution de sa communauté d'utilisateurs notamment par la publications de packages et de tutoriels. Cette évolution a permis d'étendre les fonctionnalités de ce langage à la rédaction d'ouvrage avec \href{https://bookdown.org/}{bookdown}, d'article et de présentations avec \href{https://rmarkdown.rstudio.com/}{R markdown}, à la représentation graphique avec \href{https://ggplot2.tidyverse.org/reference/geom_bar.html}{ggplot2} etc.
+Rien que sur le CRAN (Comprehensive R Archive Network) on peut trouver plus de 1800 packages.
 
-\hypertarget{an-unnumbered-section}{%
-\subsection*{An unnumbered section}\label{an-unnumbered-section}}
-\addcontentsline{toc}{subsection}{An unnumbered section}
-
-Chapters and sections are numbered by default. To un-number a heading, add a \texttt{\{.unnumbered\}} or the shorter \texttt{\{-\}} at the end of the heading, like in this section.
+Dans le chapitre suivant nous allons voir les bases de la programmation avec R en utilisant le logiciel \href{https://www.rstudio.com/}{RStudio}.
 
 \hypertarget{base}{%
-\chapter{Bases de R}\label{base}}
+\chapter{les bases}\label{base}}
 
-Cross-references make it easier for your readers to find and link to elements in your book.
+A l'instar des autres langages, R a besoin d'un environnement de développement intégré (IDE) pour être utilisé. En plus d'une console interactive, l'IDE propose plusieurs fonctionnalités. Nous en verrons quelques-unes plus tard.\\
+R est intégrée par plusieurs logiciels tels que R lui-même, IntelliJ IDE, Rcode etc. Tout au long de cet ouvrage nous n'utiliserons que RStudio qui est l'un des IDE les plus célèbres de R.
 
 \hypertarget{interface}{%
 \section{Interface}\label{interface}}
 
-There are two steps to cross-reference any heading:
+\includegraphics[width=3.125in,height=\textheight]{Console.png}\\
+L'interface RStudio se présente ainsi par défaut. Nous pouvons voir une console, un environnement de travail, une partie pour les scripts et une autre pour la visualisation des graphiques.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+\begin{itemize}
 \tightlist
 \item
-  Label the heading: \texttt{\#\ Hello\ world\ \{\#nice-label\}}.
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Leave the label off if you like the automated heading generated based on your heading title: for example, \texttt{\#\ Hello\ world} = \texttt{\#\ Hello\ world\ \{\#hello-world\}}.
-  \item
-    To label an un-numbered heading, use: \texttt{\#\ Hello\ world\ \{-\#nice-label\}} or \texttt{\{\#\ Hello\ world\ .unnumbered\}}.
-  \end{itemize}
+  La \emph{console} peut servir à écrire une ligne d'instruction qui sera exécutée en appuyant sur Entrer.\\
 \item
-  Next, reference the labeled heading anywhere in the text using \texttt{\textbackslash{}@ref(nice-label)}; for example, please see Chapter \ref{cross}.
-
-  \begin{itemize}
-  \tightlist
-  \item
-    If you prefer text as the link instead of a numbered reference use: \protect\hyperlink{cross}{any text you want can go here}.
-  \end{itemize}
-\end{enumerate}
+  La partie dédiée au \emph{scripts} permet d'écrire un ensemble de lignes de codes qui peuvent être exécutées par ordre voulu par l'utilisateur. En plus des scripts, on peut y visualiser nos tableaux de données qui sont décrits dans la section \ref{dataframe}.\\
+\item
+  Les graphes peuvent être visibles dans la partie \emph{Plots} de notre interface. Cette partie est un panneau contenant les onglets \emph{Viewer} pour les pages html, \emph{Files} pour naviguer dans les fichiers, \emph{Packages} pour gérer les packages installes et \emph{Help} pour chercher de l'aide.\\
+\item
+  La dernière partie c'est à dire \emph{Environment} est consacrée à la gestion de l'environnement de travail. Elle permet de voir les variable créé lors de notre session mais aussi d'avoir une idée sur leur structure
+\end{itemize}
 
 \hypertarget{firstcode}{%
 \section{Premiers codes}\label{firstcode}}
 
-Figures and tables \emph{with captions} can also be cross-referenced from elsewhere in your book using \texttt{\textbackslash{}@ref(fig:chunk-label)} and \texttt{\textbackslash{}@ref(tab:chunk-label)}, respectively.
-
-See Figure \ref{fig:nice-fig}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{par}\NormalTok{(}\AttributeTok{mar =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, .}\DecValTok{1}\NormalTok{, .}\DecValTok{1}\NormalTok{))}
-\FunctionTok{plot}\NormalTok{(pressure, }\AttributeTok{type =} \StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{, }\AttributeTok{pch =} \DecValTok{19}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth]{02-bases-R_files/figure-latex/nice-fig-1} 
-
-}
-
-\caption{Here is a nice figure!}\label{fig:nice-fig}
-\end{figure}
-
-Don't miss Table \ref{tab:nice-tab}.
+Et si on écrivait notre premier code ?
+Dans la section précédente nous avons présenté brièvement l'interface de RStudio, place maintenant à notre première instruction. Commencez par effectuer une petite opération d'addition (\texttt{2+3}) sur votre console puis appuyez sur Entrer.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}
-  \FunctionTok{head}\NormalTok{(pressure, }\DecValTok{10}\NormalTok{), }\AttributeTok{caption =} \StringTok{\textquotesingle{}Here is a nice table!\textquotesingle{}}\NormalTok{,}
-  \AttributeTok{booktabs =} \ConstantTok{TRUE}
-\NormalTok{)}
+\DecValTok{2}\SpecialCharTok{+}\DecValTok{3}
+\CommentTok{\#\textgreater{} [1] 5}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{table}
+Le résultat obtenu est tout naturellement \texttt{5}. Vous constatez que \texttt{{[}1{]}} précède le résultat de l'opération, en effet l'affichage se fait par défaut sous forme d'une liste\ref{list}.\\
+La console peut être utilisée comme une calculatrice et supporte toute les opération arithmétique telle que la soustraction(\texttt{-}), l'addition(\texttt{+}), la multiplication(\texttt{*}), la division décimale(\texttt{/}), la division entière(\texttt{\%/\%}), le modulo\footnote{modulo : Cet opérateur renvoi le reste de la division entre deux nombres} (\texttt{\%\%}).\\
+Le symbole (\texttt{\#}) sert à écrire une ligne de commentaire.
 
-\caption{\label{tab:nice-tab}Here is a nice table!}
-\centering
-\begin{tabular}[t]{rr}
-\toprule
-temperature & pressure\\
-\midrule
-0 & 0.0002\\
-20 & 0.0012\\
-40 & 0.0060\\
-60 & 0.0300\\
-80 & 0.0900\\
-\addlinespace
-100 & 0.2700\\
-120 & 0.7500\\
-140 & 1.8500\\
-160 & 4.2000\\
-180 & 8.8000\\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{+}\DecValTok{2} \CommentTok{\#addition}
+
+\DecValTok{1{-}2} \CommentTok{\#Soustraction}
+
+\DecValTok{1}\SpecialCharTok{/}\DecValTok{2} \CommentTok{\#Division decimale}
+
+\DecValTok{1}\SpecialCharTok{\%/\%}\DecValTok{2} \CommentTok{\#Division entiere}
+
+\DecValTok{1}\SpecialCharTok{\%\%}\DecValTok{2} \CommentTok{\#Modulo}
+\end{Highlighting}
+\end{Shaded}
+
+On peut aussi effectuer des assignations sans déclarer les variables au préalable comme l'indique le code suivant.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \DecValTok{1} \CommentTok{\#affection de la valeur 1 à x}
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{2} \CommentTok{\#affection de la valeur 2 à y}
+\NormalTok{x}\SpecialCharTok{+}\NormalTok{y }\CommentTok{\#somme de x et y (1+2)}
+\CommentTok{\#\textgreater{} [1] 3}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{data-R}{%
 \section{Données sur R}\label{data-R}}
 
+Il existe 6 principaux types simples de données sur R sont : \emph{logical}, \emph{integer}, \emph{double}, \emph{complex}, \emph{character}, \emph{raw}.\\
+Il arrive qu'une structure de données se compose de types simples données, c'est ce que nous allons étudier dans cette section.
+
 \hypertarget{vecteur}{%
 \subsection{Vecteur}\label{vecteur}}
+
+\hypertarget{duxe9finition}{%
+\subsubsection*{Définition}\label{duxe9finition}}
+\addcontentsline{toc}{subsubsection}{Définition}
+
+Le vecteur est un objet de base de R qui correspond à une liste d'éléments. Ses propriétés fondamentales sont :
+
+\begin{itemize}
+\tightlist
+\item
+  Dimension unitaire (les vecteurs sont unidimensionnel)\\
+\item
+  Éléments de même type (Toutes les valeurs contenues dans un vecteur sont de même type)\\
+\item
+  Longueure égale au nombre d'éléments
+\end{itemize}
+
+\hypertarget{cruxe9ation}{%
+\subsubsection*{Création}\label{cruxe9ation}}
+\addcontentsline{toc}{subsubsection}{Création}
+
+La fonction la plus classique pour créer un vecteur est \texttt{c(...)}. Elle prend comme argument les éléments du vecteur. Dans le code suivant, nous allons créer un vecteur contenant les valeurs de 1 jusqu'à 5 puis nous allons le nommer \texttt{myvector}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myvector }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{) }\CommentTok{\#Création}
+\NormalTok{myvector }\CommentTok{\#Affichage}
+\CommentTok{\#\textgreater{} [1] 1 2 3 4 5}
+\end{Highlighting}
+\end{Shaded}
+
+Maintenant que nous avons un vecteur, il est naturel de se demander comment accéder aux éléments de ce dernier. Facile ! Il suffit de mettre entre crochet (\texttt{{[}{]}}), juste après le nom de votre vecteur, l'indice de l'élément voulu sachant que sur R le comptage commence par 1 au lieu de 0. Par exemple, dans la cellule suivante, le code permet d'afficher le quatrième élément c'est-à-dire celui qui a pour indice 4 de \texttt{myvector}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myvector[}\DecValTok{4}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] 4}
+\end{Highlighting}
+\end{Shaded}
+
+Vous pouvez aussi supprimer un élément d'un vecteur en essayant de l'afficher avec l'opposé de son indice. Supprimons le premier élément de \texttt{myvector} !
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myvector[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] 2 3 4 5}
+\end{Highlighting}
+\end{Shaded}
+
+Il se peut qu'on veuille créer une séquence de valeurs avec un pas spécifié. Un exemple concret c'est de vouloir créer un vecteur nommé \texttt{evenVector} contenant tous les nombres pairs compris entre 0 et 100. L'utilisation de la fonction \texttt{c()} rendrait le travail fastidieux. La fonction \texttt{seq()} est plus adaptée à notre situation. Elle prend comme argument fom(le début de la séquence), to(la fin de la séquence), by(le pas de la séquence), etc. Pour en savoir plus vous pouvez exécuter la commande \texttt{?seq()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{evenVector }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\AttributeTok{from =} \DecValTok{0}\NormalTok{, }\AttributeTok{to =} \DecValTok{100}\NormalTok{, }\AttributeTok{by =} \DecValTok{2}\NormalTok{) }\CommentTok{\#Création }
+\NormalTok{evenVector }\CommentTok{\#Affichage}
+\CommentTok{\#\textgreater{}  [1]   0   2   4   6   8  10  12  14  16  18  20  22  24  26}
+\CommentTok{\#\textgreater{} [15]  28  30  32  34  36  38  40  42  44  46  48  50  52  54}
+\CommentTok{\#\textgreater{} [29]  56  58  60  62  64  66  68  70  72  74  76  78  80  82}
+\CommentTok{\#\textgreater{} [43]  84  86  88  90  92  94  96  98 100}
+\end{Highlighting}
+\end{Shaded}
+
+Si le pas de la séquence est de 1, on peut utiliser à la place de \texttt{seq()} l'opérateur \texttt{:} de premier terme le début de la séquence et de second terme la fin de la séquence. L'exemple qui suit permet de créer le vecteur \texttt{myvector} contenant tous les entiers de 1 à 5.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myvector }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}
+\NormalTok{myvector}
+\CommentTok{\#\textgreater{} [1] 1 2 3 4 5}
+\end{Highlighting}
+\end{Shaded}
+
+Il est possible de créer un vecteur d'éléments répétitifs avec la fonction \texttt{rep()}. Supposons que nous voulons créer le vecteur \texttt{repvector} contenant 5 fois de suite tous les entiers de 1 à 10, nous allons donner en premier argument à la fonction \texttt{rep()} l'objet à répéter (\texttt{1:10}) et comme second argument le nombre de répétitions(\texttt{5}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{repvector }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{5}\NormalTok{)}
+\NormalTok{repvector}
+\CommentTok{\#\textgreater{}  [1]  1  2  3  4  5  6  7  8  9 10  1  2  3  4  5  6  7  8}
+\CommentTok{\#\textgreater{} [19]  9 10  1  2  3  4  5  6  7  8  9 10  1  2  3  4  5  6}
+\CommentTok{\#\textgreater{} [37]  7  8  9 10  1  2  3  4  5  6  7  8  9 10}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{facteur}{%
 \subsection{Facteur}\label{facteur}}
 
-\hypertarget{liste}{%
-\subsection{Liste}\label{liste}}
+\hypertarget{duxe9finition-1}{%
+\subsubsection*{Définition}\label{duxe9finition-1}}
+\addcontentsline{toc}{subsubsection}{Définition}
+
+Le facteur (\emph{factor}) est un vecteur de valeurs d'une variable catégorielle. Très souvevent, les variables qualitatives sont catégorielles c'est le cas du sexe(Homme, Femme), des questions directes(Oui, Non), etc.C'est d'ailleurs la raison de l'existance de cet objet sur R qui est très utiles dans certaines representations graphiques.Le caractère principal de \emph{factor} est qu'il dispose de niveaux appelés \texttt{levels}. Ces derniers sont uniques et peuvent avoir des valeurs qui ne sont pas contenus par le facteur.
+
+\hypertarget{cruxe9ation-1}{%
+\subsubsection*{Création}\label{cruxe9ation-1}}
+\addcontentsline{toc}{subsubsection}{Création}
+
+Pour créer un facteur, on commence par créer un vecteur puis avec la fonction \texttt{factor()} nous pouvons le transformer en objet de type facteur. Par défaut, les niveaux des facteurs sont les modalités prises par le vecteur. Pour modifier les niveaux on utilise l'argument \texttt{levels} de la fonction \texttt{factor()} pour spécifier notre vecteur de niveaux.
+On se propose de transformer en facteur le vecteur \texttt{animal} de modalités \emph{chat}, \emph{souris}, \emph{chien} en un facteur de niveaux \emph{chat}, \emph{souris}, \emph{chien} et \emph{rat}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{animal }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"souris"}\NormalTok{,}\StringTok{"souris"}\NormalTok{,}\StringTok{"chien"}\NormalTok{,}\StringTok{"chat"}\NormalTok{,}\StringTok{"chien"}\NormalTok{,}\StringTok{"chat"}\NormalTok{,}\StringTok{"souris"}\NormalTok{,}\StringTok{"chat"}\NormalTok{,}\StringTok{"chat"}\NormalTok{,}\StringTok{"chien"}\NormalTok{)}
+\NormalTok{myfactor }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(animal,}\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}chat\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}souris\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}chien\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}rat\textquotesingle{}}\NormalTok{))}
+\NormalTok{myfactor}
+\CommentTok{\#\textgreater{}  [1] souris souris chien  chat   chien  chat   souris chat  }
+\CommentTok{\#\textgreater{}  [9] chat   chien }
+\CommentTok{\#\textgreater{} Levels: chat souris chien rat}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{list}{%
+\subsection{Liste}\label{list}}
+
+\hypertarget{duxe9finition-2}{%
+\subsubsection*{Définition}\label{duxe9finition-2}}
+\addcontentsline{toc}{subsubsection}{Définition}
+
+Une liste est un objet pouvant contenir des éléments de tous types. L'homogénéité du type des éléments n'est pas obligatoire dans une liste c'est à dire qu'elle peut contenir des listes, des vecteurs, des matrices, des fonctions etc. On peut nommer les éléments d'une liste lors de sa création en effectuant des affections.
+
+\hypertarget{cruxe9ation-2}{%
+\subsubsection*{Création}\label{cruxe9ation-2}}
+\addcontentsline{toc}{subsubsection}{Création}
+
+La création d'une liste se fait avec la fonction \texttt{list()} qui prend en argument les éléments à concaténer.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mylist }\OtherTok{=} \FunctionTok{list}\NormalTok{(}\AttributeTok{num =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{), }\AttributeTok{char =} \StringTok{\textquotesingle{}character\textquotesingle{}}\NormalTok{)}
+\NormalTok{mylist}
+\CommentTok{\#\textgreater{} $num}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $char}
+\CommentTok{\#\textgreater{} [1] "character"}
+\end{Highlighting}
+\end{Shaded}
+
+On peut accéder à un élément par son nom en utilisant le symbole \texttt{\$} (\texttt{malist\$nomElement}). L'accès à l'élément \texttt{num} de \texttt{mylist} peut se faire de la manière suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mylist}\SpecialCharTok{$}\NormalTok{num}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\end{Highlighting}
+\end{Shaded}
+
+Un autre moyen d'accéder à un élément d'une liste c'est par son indice mis entre deux crochets (\texttt{{[}{[}index{]}{]}}) juste après le nom de la liste. On peut reprendre l'accès à l'élément \texttt{num} par indexation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mylist[[}\DecValTok{1}\NormalTok{]]}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\end{Highlighting}
+\end{Shaded}
+
+On peut modifier l'élément \texttt{num} de mylist en lui affectant une nouvelle valeur.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mylist}\SpecialCharTok{$}\NormalTok{num }\OtherTok{=} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}
+\NormalTok{mylist}\SpecialCharTok{$}\NormalTok{num}
+\CommentTok{\#\textgreater{}  [1]  1  2  3  4  5  6  7  8  9 10}
+\end{Highlighting}
+\end{Shaded}
+
+L'ajout d'un nouvel élément dans \texttt{mylist} peut aussi se faire facilement. Si on se propose d'ajouter un élément nommé \texttt{logical} qui reçoit initialement \texttt{TRUE} on peut procéder ainsi :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mylist}\SpecialCharTok{$}\NormalTok{logical }\OtherTok{=} \ConstantTok{TRUE}
+\NormalTok{mylist}
+\CommentTok{\#\textgreater{} $num}
+\CommentTok{\#\textgreater{}  [1]  1  2  3  4  5  6  7  8  9 10}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $char}
+\CommentTok{\#\textgreater{} [1] "character"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $logical}
+\CommentTok{\#\textgreater{} [1] TRUE}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{matrice}{%
 \subsection{Matrice}\label{matrice}}
 
-\hypertarget{tableau}{%
-\subsection{Tableau}\label{tableau}}
+\hypertarget{duxe9finition-3}{%
+\subsubsection*{Définition}\label{duxe9finition-3}}
+\addcontentsline{toc}{subsubsection}{Définition}
 
-\hypertarget{tableau-de-donnuxe9es-ou-data-frame}{%
-\subsection{Tableau de données ou Data frame}\label{tableau-de-donnuxe9es-ou-data-frame}}
+Un matrice est un un tableau dont les colonnes sont des vecteurs de même type et de même taille. Autrement dit, la matrice est un objet de deux dimensions dont tous les éléments sont de type homogène. R ne considère pas un vecteur comme une matrice colonne ou ligne, ce sont deux types de structures différentes.
+
+\hypertarget{cruxe9ation-3}{%
+\subsubsection*{Création}\label{cruxe9ation-3}}
+\addcontentsline{toc}{subsubsection}{Création}
+
+Une matrice colonne se crée avec la fonction \texttt{cbind()} et la matrice ligne par \texttt{rbind()}. Pour créer une matrice de plusieurs colonnes on utilise la fonction \texttt{matrix()}.
+Vous pouvez avoir une documentation complète de ces fonctions en exécutant la commande faisant précéder d'un point d'interrogation le nom de votre fonction ( \emph{Exemple} : \texttt{?cbind()}) dans votre console.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#matrice colonne}
+\NormalTok{colMatrix }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)}
+\NormalTok{colMatrix}
+\CommentTok{\#\textgreater{}      [,1]}
+\CommentTok{\#\textgreater{} [1,]    1}
+\CommentTok{\#\textgreater{} [2,]    2}
+\CommentTok{\#\textgreater{} [3,]    3}
+\CommentTok{\#\textgreater{} [4,]    4}
+\CommentTok{\#\textgreater{} [5,]    5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#matrice ligne}
+\NormalTok{rowMatrix }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)}
+\NormalTok{rowMatrix}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3] [,4] [,5]}
+\CommentTok{\#\textgreater{} [1,]    1    2    3    4    5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#matrice}
+\NormalTok{Matrix }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\AttributeTok{x=}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{), }\AttributeTok{y =} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{5}\NormalTok{)),}\AttributeTok{nrow =} \DecValTok{5}\NormalTok{)}
+\NormalTok{Matrix}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    1    1}
+\CommentTok{\#\textgreater{} [2,]    2    1}
+\CommentTok{\#\textgreater{} [3,]    3    1}
+\CommentTok{\#\textgreater{} [4,]    4    1}
+\CommentTok{\#\textgreater{} [5,]    5    1}
+\end{Highlighting}
+\end{Shaded}
+
+On peut accéder aux éléments de la matrice par leurs indices. Comme on le fait en maths, il faut d'abord mettre le numéro de la ligne puis le numéro de la colonne séparée par une virgule.
+On peut afficher une ligne (respectivement une colonne )toute entière en spécifiant seulement l'indice de la ligne (respectivement la colonne).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Accès à l\textquotesingle{}élément de la ligne 4 et de la colonne 1}
+\NormalTok{Matrix[}\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] 4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Accès à  la ligne 2 }
+\NormalTok{Matrix[}\DecValTok{2}\NormalTok{,]}
+\CommentTok{\#\textgreater{} [1] 2 1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Accès à la colonne 3}
+\NormalTok{Matrix[,}\DecValTok{2}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] 1 1 1 1 1}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dataframe}{%
+\subsection{Tableau de données ou Data frame}\label{dataframe}}
+
+\hypertarget{duxe9finition-4}{%
+\subsubsection*{Définition}\label{duxe9finition-4}}
+\addcontentsline{toc}{subsubsection}{Définition}
+
+Un tableau de données (data frame) est comme la matrice, un objet de deux dimensions sauf qu'il peut contenir des colonnes de types différents. Chaque colonne doit contenir des éléments de même type. La data.frame est un objet très utilisé sur R et ce sera le cas dans les chapitres suivants de ce livre.
+
+\hypertarget{cruxe9ation-4}{%
+\subsubsection*{Création}\label{cruxe9ation-4}}
+\addcontentsline{toc}{subsubsection}{Création}
+
+La fonction \texttt{data.frame()} permet de créer un un tableau de données. Elle prend en argument des vecteurs de même longueur. Il en existe d'autres arguments pour cette fonction, pour en savoir plus vous pouvez exécuter \texttt{?data.frame()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{,}\DecValTok{67}\NormalTok{,}\DecValTok{13}\NormalTok{)}
+\NormalTok{y }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{)}
+\NormalTok{tableau }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(x,y)}
+\NormalTok{tableau}
+\CommentTok{\#\textgreater{}    x y}
+\CommentTok{\#\textgreater{} 1 12 A}
+\CommentTok{\#\textgreater{} 2 67 B}
+\CommentTok{\#\textgreater{} 3 13 C}
+\end{Highlighting}
+\end{Shaded}
+
+L'accès à un élément peut se faire de la même manière qu'avec les matrices. Pour accéder à une colonne par son nom on utilise le symbole \texttt{\$} comme dans la section liste. Les codes suivants permettent d'accéder à l'élément ``B'' de \texttt{tableau} de plusieurs façons.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Indexiation}
+\NormalTok{tableau[}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] "B"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Par le nom de la colonne}
+\NormalTok{tableau}\SpecialCharTok{$}\NormalTok{y[}\DecValTok{2}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] "B"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau[[}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{]][}\DecValTok{2}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] "B"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{les-boucles-et-conditions}{%
+\section{Les boucles et conditions}\label{les-boucles-et-conditions}}
 
 \hypertarget{les-boucles}{%
-\section{Les boucles}\label{les-boucles}}
+\subsection{Les boucles}\label{les-boucles}}
+
+Les boucles permettent de gérer des instructions répétitives. Sur R il est plus pratique d'utiliser la vectorisation, mais pour débuter, les boucles feront l'affaire.
+
+\hypertarget{for}{%
+\subsubsection*{for}\label{for}}
+\addcontentsline{toc}{subsubsection}{for}
+
+La boucle for permet d'itérer sur un vecteur de longueur connu d'avance. La syntaxe est la suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (variable }\ControlFlowTok{in}\NormalTok{ vector) \{}
+\NormalTok{  statements}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Un exemple de création d'un vecteur de 5 éléments contenant les carré des nombre compris entre 1 et 5
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Initialisation}
+\NormalTok{carrevector }\OtherTok{=} \DecValTok{0}
+\CommentTok{\#Boucle}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{) \{}
+\NormalTok{  carrevector[i]}\OtherTok{=}\NormalTok{i}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{\}}
+\CommentTok{\#affichage}
+\NormalTok{carrevector}
+\CommentTok{\#\textgreater{} [1]  1  4  9 16 25}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{while}{%
+\subsubsection*{While}\label{while}}
+\addcontentsline{toc}{subsubsection}{While}
+
+Si le nombre d'itérations n'est pas connu d'avance alors que la condition d'arrêt si, il est préférable d'utiliser la boucle while. Elle permet de répéter une instruction tant qu'une condition est satisfaite. la syntaxe est la suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{while}\NormalTok{ (condition) \{}
+\NormalTok{  statements}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Avec la boucle while on peut chercher le premier élément supérieur à 10 dans \texttt{carrevector}. Les deux conditions d'arrêts sont alors : l'élément(\texttt{x}) supérieur à 10 et(\texttt{\&}) l'indice(\texttt{j}) supérieur à la longueur du vecteur(\texttt{5}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Initialisation}
+\NormalTok{j }\OtherTok{=} \DecValTok{1}
+\CommentTok{\# Boucle}
+\ControlFlowTok{while}\NormalTok{ (carrevector[j]}\SpecialCharTok{\textless{}=}\DecValTok{10} \SpecialCharTok{\&}\NormalTok{ j}\SpecialCharTok{\textless{}=} \DecValTok{5}\NormalTok{)\{}
+\NormalTok{  j}\OtherTok{=}\NormalTok{j}\SpecialCharTok{+}\DecValTok{1}
+\NormalTok{\}}
+\NormalTok{x}\OtherTok{=}\NormalTok{carrevector[j]}
+\CommentTok{\# Affichage}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} [1] 16}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{les-conditions}{%
+\subsection{Les conditions}\label{les-conditions}}
+
+Elles permettent d'exécuter des instructions si une ou des conditions sont satisfaites. la syntaxe la plus simple est :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (condition) \{}
+  \CommentTok{\#statements}
+\NormalTok{\}}\ControlFlowTok{else}\NormalTok{\{}
+  \CommentTok{\#statements}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Exemple} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{num }\OtherTok{=} \DecValTok{10}
+\ControlFlowTok{if}\NormalTok{ (num }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Ce nombre est positif\textquotesingle{}}\NormalTok{)}
+\NormalTok{\}}\ControlFlowTok{else}\NormalTok{\{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Ce nombre est negatif\textquotesingle{}}\NormalTok{)}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] "Ce nombre est positif"}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{les-fonctions}{%
 \section{Les fonctions}\label{les-fonctions}}
 
-\hypertarget{parts}{%
-\chapter{Parts}\label{parts}}
+Si dans un projet vous aurez à utiliser plusieurs fois un bloc d'instructions, l'idéal c'est de créer des fonctions. Pour cela, on a besoin de \texttt{function()} que l'on assigne au nom de notre fonction.
+Les fonctions peuvent retourner une valeur ou bien exécuter seulement un ensemble d'instructions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mafonction }\OtherTok{=}\NormalTok{ name }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(arguments) \{}
+\NormalTok{  instructions}
+  \FunctionTok{return}\NormalTok{(valuer)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Pour créer la fonction \texttt{addition} qui somme deux éléments \texttt{x} et \texttt{y} on procède ainsi :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{addition }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x,y)\{}
+  \FunctionTok{return}\NormalTok{(x}\SpecialCharTok{+}\NormalTok{y)}
+\NormalTok{\}}
+\CommentTok{\#Ou bien}
+\NormalTok{addition }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x,y)\{}
+\NormalTok{  x}\SpecialCharTok{+}\NormalTok{y}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Pour utiliser la fonction il suffit de l'appeler en indiquant les valeurs de ses arguments entre parenthèses.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# somme de 10 et de 4}
+\FunctionTok{addition}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 14}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{liens-utils}{%
+\section*{Liens utils}\label{liens-utils}}
+\addcontentsline{toc}{section}{Liens utils}
+
+\citet{base}\strut \\
+\url{https://cran.r-project.org/doc/contrib/Paradis-rdebuts_fr.pdf}
+
+\hypertarget{part-ii-regressions}{%
+\part{II-Regressions}\label{part-ii-regressions}}
+
+\hypertarget{simple-lm}{%
+\chapter{La régression linéaire simple}\label{simple-lm}}
 
 You can add parts to organize one or more book chapters together. Parts can be inserted at the top of an .Rmd file, before the first-level chapter heading in that same file.
 
@@ -306,8 +724,8 @@ Add an unnumbered part: \texttt{\#\ (PART\textbackslash{}*)\ Act\ one\ \{-\}} (f
 
 Add an appendix as a special kind of un-numbered part: \texttt{\#\ (APPENDIX)\ Other\ stuff\ \{-\}} (followed by \texttt{\#\ A\ chapter}). Chapters in an appendix are prepended with letters instead of numbers.
 
-\hypertarget{footnotes-and-citations}{%
-\chapter{Footnotes and citations}\label{footnotes-and-citations}}
+\hypertarget{multiple-lm}{%
+\chapter{La régression linéaire multiple}\label{multiple-lm}}
 
 \hypertarget{footnotes}{%
 \section{Footnotes}\label{footnotes}}
@@ -326,8 +744,8 @@ The \texttt{bs4\_book} theme makes footnotes appear inline when you click on the
 
 The RStudio Visual Markdown Editor can also make it easier to insert citations: \url{https://rstudio.github.io/visual-markdown-editing/\#/citations}
 
-\hypertarget{blocks}{%
-\chapter{Blocks}\label{blocks}}
+\hypertarget{glm}{%
+\chapter{Le modèle linéaire généralisé}\label{glm}}
 
 \hypertarget{equations}{%
 \section{Equations}\label{equations}}
@@ -379,8 +797,8 @@ You may also use: \texttt{.rmdcaution}, \texttt{.rmdimportant}, \texttt{.rmdtip}
 
 The R Markdown Cookbook provides more help on how to use custom blocks to design your own callouts: \url{https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html}
 
-\hypertarget{sharing-your-book}{%
-\chapter{Sharing your book}\label{sharing-your-book}}
+\hypertarget{anova1}{%
+\chapter{Analyse de la variance à un facteur}\label{anova1}}
 
 \hypertarget{publishing}{%
 \section{Publishing}\label{publishing}}
@@ -411,6 +829,80 @@ Or use:
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{anova2}{%
+\chapter{Analyse de la variance à deux facteurs}\label{anova2}}
+
+\hypertarget{ancova}{%
+\chapter{Analyse de la covariance}\label{ancova}}
+
+\hypertarget{part-iii-suxe9ries-chronologiques}{%
+\part{III-Séries chronologiques}\label{part-iii-suxe9ries-chronologiques}}
+
+\hypertarget{intro-ts}{%
+\chapter{Introduction}\label{intro-ts}}
+
+\hypertarget{duxe9finition-5}{%
+\section{Définition}\label{duxe9finition-5}}
+
+\hypertarget{exemples}{%
+\section{Exemples}\label{exemples}}
+
+\hypertarget{tendances-et-saisonnalituxe9s}{%
+\chapter{Tendances et saisonnalités}\label{tendances-et-saisonnalituxe9s}}
+
+\hypertarget{processus-stationnaire}{%
+\section{Processus stationnaire}\label{processus-stationnaire}}
+
+\hypertarget{estimation-paramuxe9trique-de-la-tendance}{%
+\section{Estimation paramétrique de la tendance}\label{estimation-paramuxe9trique-de-la-tendance}}
+
+\hypertarget{estimation-non-paramuxe9trique}{%
+\section{Estimation non paramétrique}\label{estimation-non-paramuxe9trique}}
+
+\hypertarget{elimination-du-trend-et-de-la-saisonnalituxe9}{%
+\section{Elimination du trend et de la saisonnalité}\label{elimination-du-trend-et-de-la-saisonnalituxe9}}
+
+\hypertarget{series-stat}{%
+\chapter{Séries stationnaires}\label{series-stat}}
+
+\hypertarget{processus-linuxe9aires-et-processus-linuxe9aires-guxe9nuxe9raux}{%
+\section{Processus linéaires et processus linéaires généraux}\label{processus-linuxe9aires-et-processus-linuxe9aires-guxe9nuxe9raux}}
+
+\hypertarget{les-processus-armapq}{%
+\section{Les processus ARMA(p,q)}\label{les-processus-armapq}}
+
+\hypertarget{processusmaq}{%
+\subsection{ProcessusMA(q)}\label{processusmaq}}
+
+\hypertarget{processus-arp}{%
+\subsection{Processus AR(p)}\label{processus-arp}}
+
+\hypertarget{autocovariance-des-processus-arma}{%
+\section{Autocovariance des processus ARMA}\label{autocovariance-des-processus-arma}}
+
+\hypertarget{proc-non-stat}{%
+\chapter{Séries non stationnaires}\label{proc-non-stat}}
+
+\hypertarget{processus-arima}{%
+\section{Processus ARIMA}\label{processus-arima}}
+
+\hypertarget{processus-sarima}{%
+\section{Processus SARIMA}\label{processus-sarima}}
+
+\hypertarget{ARCH-GARCH}{%
+\chapter{Processus ARCH et GARCH}\label{ARCH-GARCH}}
+
+\hypertarget{duxe9finition-6}{%
+\section{Définition}\label{duxe9finition-6}}
+
+\hypertarget{moduxe8les-arch}{%
+\section{Modèles ARCH}\label{moduxe8les-arch}}
+
+\hypertarget{moduxe8les-garch}{%
+\section{Modèles GARCH}\label{moduxe8les-garch}}
+
+\hypertarget{moduxe8lesarma-garch}{%
+\section{ModèlesARMA-GARCH}\label{moduxe8lesarma-garch}}
 
   \bibliography{book.bib,packages.bib}
 

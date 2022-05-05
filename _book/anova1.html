@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>1 Introduction | R pour l’économétrie</title>
+<title>6 Analyse de la variance à un facteur | R pour l’économétrie</title>
 <meta name="author" content="Abdoul Oudouss Diakite">
-<meta name="description" content="R est un langage de programmation créé par les staticiens Ross Ihaka et Robert Gentleman. C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au...">
+<meta name="description" content="6.1 Publishing HTML books can be published online, see: https://bookdown.org/yihui/bookdown/publishing.html  6.2 404 pages By default, users will be directed to a 404 page if they try to access a...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="1 Introduction | R pour l’économétrie">
+<meta property="og:title" content="6 Analyse de la variance à un facteur | R pour l’économétrie">
 <meta property="og:type" content="book">
-<meta property="og:description" content="R est un langage de programmation créé par les staticiens Ross Ihaka et Robert Gentleman. C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au...">
+<meta property="og:description" content="6.1 Publishing HTML books can be published online, see: https://bookdown.org/yihui/bookdown/publishing.html  6.2 404 pages By default, users will be directed to a 404 page if they try to access a...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1 Introduction | R pour l’économétrie">
+<meta name="twitter:title" content="6 Analyse de la variance à un facteur | R pour l’économétrie">
 <meta name="twitter:site" content="@abdouloudouss">
-<meta name="twitter:description" content="R est un langage de programmation créé par les staticiens Ross Ihaka et Robert Gentleman. C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au...">
+<meta name="twitter:description" content="6.1 Publishing HTML books can be published online, see: https://bookdown.org/yihui/bookdown/publishing.html  6.2 404 pages By default, users will be directed to a 404 page if they try to access a...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -68,13 +68,13 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Bienvenue</a></li>
 <li class="book-part">I-Débuter avec R</li>
-<li><a class="active" href="intro1.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="" href="intro1.html"><span class="header-section-number">1</span> Introduction</a></li>
 <li><a class="" href="base.html"><span class="header-section-number">2</span> les bases</a></li>
 <li class="book-part">II-Regressions</li>
 <li><a class="" href="simple-lm.html"><span class="header-section-number">3</span> La régression linéaire simple</a></li>
 <li><a class="" href="multiple-lm.html"><span class="header-section-number">4</span> La régression linéaire multiple</a></li>
 <li><a class="" href="glm.html"><span class="header-section-number">5</span> Le modèle linéaire généralisé</a></li>
-<li><a class="" href="anova1.html"><span class="header-section-number">6</span> Analyse de la variance à un facteur</a></li>
+<li><a class="active" href="anova1.html"><span class="header-section-number">6</span> Analyse de la variance à un facteur</a></li>
 <li><a class="" href="anova2.html"><span class="header-section-number">7</span> Analyse de la variance à deux facteurs</a></li>
 <li><a class="" href="ancova.html"><span class="header-section-number">8</span> Analyse de la covariance</a></li>
 <li class="book-part">III-Séries chronologiques</li>
@@ -91,29 +91,52 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro1" class="section level1" number="1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="anova1" class="section level1" number="6">
 <h1>
-<span class="header-section-number">1</span> Introduction<a class="anchor" aria-label="anchor" href="#intro1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6</span> Analyse de la variance à un facteur<a class="anchor" aria-label="anchor" href="#anova1"><i class="fas fa-link"></i></a>
 </h1>
-<p>R est un langage de programmation créé par les staticiens <a href="https://en.wikipedia.org/wiki/Ross_Ihaka">Ross Ihaka</a> et <a href="https://en.wikipedia.org/wiki/Robert_Gentleman_(statistician)">Robert Gentleman</a>.
-C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au traitement et manipulation de données. C’est aussi un logiciel à accès libre (open-source) disponible sous la licence publique générale GNU (<a href="https://en.wikipedia.org/wiki/GNU_General_Public_License">GNU General Public License</a>).</p>
-<p>Principalement écrit en <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> et <a href="https://en.wikipedia.org/wiki/Fortran">Fortran</a>, R est une implémentation du langage <a href="https://en.wikipedia.org/wiki/S_(programming_language)">S</a> qui supporte plusieurs paradigmes de programmation tel que : procédural, orienté objet, fonctionnel, réflexif, impératif, tableau.</p>
-<p>Depuis sa création, le langage a fortement évolué grâce à la contribution de sa communauté d’utilisateurs notamment par la publications de packages et de tutoriels. Cette évolution a permis d’étendre les fonctionnalités de ce langage à la rédaction d’ouvrage avec <a href="https://bookdown.org/">bookdown</a>, d’article et de présentations avec <a href="https://rmarkdown.rstudio.com/">R markdown</a>, à la représentation graphique avec <a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">ggplot2</a> etc.
-Rien que sur le CRAN (Comprehensive R Archive Network) on peut trouver plus de 1800 packages.</p>
-<p>Dans le chapitre suivant nous allons voir les bases de la programmation avec R en utilisant le logiciel <a href="https://www.rstudio.com/">RStudio</a>.</p>
+<div id="publishing" class="section level2" number="6.1">
+<h2>
+<span class="header-section-number">6.1</span> Publishing<a class="anchor" aria-label="anchor" href="#publishing"><i class="fas fa-link"></i></a>
+</h2>
+<p>HTML books can be published online, see: <a href="https://bookdown.org/yihui/bookdown/publishing.html" class="uri">https://bookdown.org/yihui/bookdown/publishing.html</a></p>
+</div>
+<div id="pages" class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> 404 pages<a class="anchor" aria-label="anchor" href="#pages"><i class="fas fa-link"></i></a>
+</h2>
+<p>By default, users will be directed to a 404 page if they try to access a webpage that cannot be found. If you’d like to customize your 404 page instead of using the default, you may add either a <code>_404.Rmd</code> or <code>_404.md</code> file to your project root and use code and/or Markdown syntax.</p>
+</div>
+<div id="metadata-for-sharing" class="section level2" number="6.3">
+<h2>
+<span class="header-section-number">6.3</span> Metadata for sharing<a class="anchor" aria-label="anchor" href="#metadata-for-sharing"><i class="fas fa-link"></i></a>
+</h2>
+<p>Bookdown HTML books will provide HTML metadata for social sharing on platforms like Twitter, Facebook, and LinkedIn, using information you provide in the <code>index.Rmd</code> YAML. To setup, set the <code>url</code> for your book and the path to your <code>cover-image</code> file. Your book’s <code>title</code> and <code>description</code> are also used.</p>
+<p>This <code>bs4_book</code> provides enhanced metadata for social sharing, so that each chapter shared will have a unique description, auto-generated based on the content.</p>
+<p>Specify your book’s source repository on GitHub as the <code>repo</code> in the <code>_output.yml</code> file, which allows users to view each chapter’s source file or suggest an edit. Read more about the features of this output format here:</p>
+<p><a href="https://pkgs.rstudio.com/bookdown/reference/bs4_book.html" class="uri">https://pkgs.rstudio.com/bookdown/reference/bs4_book.html</a></p>
+<p>Or use:</p>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">?</span><span class="fu">bookdown</span><span class="fu">::</span><span class="va"><a href="https://pkgs.rstudio.com/bookdown/reference/bs4_book.html">bs4_book</a></span></code></pre></div>
 
 </div>
+</div>
   <div class="chapter-nav">
-<div class="prev"><a href="index.html">Bienvenue</a></div>
-<div class="next"><a href="base.html"><span class="header-section-number">2</span> les bases</a></div>
+<div class="prev"><a href="glm.html"><span class="header-section-number">5</span> Le modèle linéaire généralisé</a></div>
+<div class="next"><a href="anova2.html"><span class="header-section-number">7</span> Analyse de la variance à deux facteurs</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#intro1"><span class="header-section-number">1</span> Introduction</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#anova1"><span class="header-section-number">6</span> Analyse de la variance à un facteur</a></li>
+<li><a class="nav-link" href="#publishing"><span class="header-section-number">6.1</span> Publishing</a></li>
+<li><a class="nav-link" href="#pages"><span class="header-section-number">6.2</span> 404 pages</a></li>
+<li><a class="nav-link" href="#metadata-for-sharing"><span class="header-section-number">6.3</span> Metadata for sharing</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/AODiakite/r4econometrics/blob/master/01-Start-R.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/AODiakite/r4econometrics/edit/master/01-Start-R.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/AODiakite/r4econometrics/blob/master/06-one-way-anova.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/AODiakite/r4econometrics/edit/master/06-one-way-anova.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

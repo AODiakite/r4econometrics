@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>1 Introduction | R pour l’économétrie</title>
+<title>11 Séries stationnaires | R pour l’économétrie</title>
 <meta name="author" content="Abdoul Oudouss Diakite">
-<meta name="description" content="R est un langage de programmation créé par les staticiens Ross Ihaka et Robert Gentleman. C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au...">
+<meta name="description" content="11.1 Processus linéaires et processus linéaires généraux   11.2 Les processus ARMA(p,q)  11.2.1 ProcessusMA(q)   11.2.2 Processus AR(p)   11.3 Autocovariance des processus ARMA">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="1 Introduction | R pour l’économétrie">
+<meta property="og:title" content="11 Séries stationnaires | R pour l’économétrie">
 <meta property="og:type" content="book">
-<meta property="og:description" content="R est un langage de programmation créé par les staticiens Ross Ihaka et Robert Gentleman. C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au...">
+<meta property="og:description" content="11.1 Processus linéaires et processus linéaires généraux   11.2 Les processus ARMA(p,q)  11.2.1 ProcessusMA(q)   11.2.2 Processus AR(p)   11.3 Autocovariance des processus ARMA">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1 Introduction | R pour l’économétrie">
+<meta name="twitter:title" content="11 Séries stationnaires | R pour l’économétrie">
 <meta name="twitter:site" content="@abdouloudouss">
-<meta name="twitter:description" content="R est un langage de programmation créé par les staticiens Ross Ihaka et Robert Gentleman. C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au...">
+<meta name="twitter:description" content="11.1 Processus linéaires et processus linéaires généraux   11.2 Les processus ARMA(p,q)  11.2.1 ProcessusMA(q)   11.2.2 Processus AR(p)   11.3 Autocovariance des processus ARMA">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -68,7 +68,7 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Bienvenue</a></li>
 <li class="book-part">I-Débuter avec R</li>
-<li><a class="active" href="intro1.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="" href="intro1.html"><span class="header-section-number">1</span> Introduction</a></li>
 <li><a class="" href="base.html"><span class="header-section-number">2</span> les bases</a></li>
 <li class="book-part">II-Regressions</li>
 <li><a class="" href="simple-lm.html"><span class="header-section-number">3</span> La régression linéaire simple</a></li>
@@ -80,7 +80,7 @@
 <li class="book-part">III-Séries chronologiques</li>
 <li><a class="" href="intro-ts.html"><span class="header-section-number">9</span> Introduction</a></li>
 <li><a class="" href="tendances-et-saisonnalit%C3%A9s.html"><span class="header-section-number">10</span> Tendances et saisonnalités</a></li>
-<li><a class="" href="series-stat.html"><span class="header-section-number">11</span> Séries stationnaires</a></li>
+<li><a class="active" href="series-stat.html"><span class="header-section-number">11</span> Séries stationnaires</a></li>
 <li><a class="" href="proc-non-stat.html"><span class="header-section-number">12</span> Séries non stationnaires</a></li>
 <li><a class="" href="ARCH-GARCH.html"><span class="header-section-number">13</span> Processus ARCH et GARCH</a></li>
 <li><a class="" href="references.html">References</a></li>
@@ -91,29 +91,58 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro1" class="section level1" number="1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="series-stat" class="section level1" number="11">
 <h1>
-<span class="header-section-number">1</span> Introduction<a class="anchor" aria-label="anchor" href="#intro1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11</span> Séries stationnaires<a class="anchor" aria-label="anchor" href="#series-stat"><i class="fas fa-link"></i></a>
 </h1>
-<p>R est un langage de programmation créé par les staticiens <a href="https://en.wikipedia.org/wiki/Ross_Ihaka">Ross Ihaka</a> et <a href="https://en.wikipedia.org/wiki/Robert_Gentleman_(statistician)">Robert Gentleman</a>.
-C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au traitement et manipulation de données. C’est aussi un logiciel à accès libre (open-source) disponible sous la licence publique générale GNU (<a href="https://en.wikipedia.org/wiki/GNU_General_Public_License">GNU General Public License</a>).</p>
-<p>Principalement écrit en <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> et <a href="https://en.wikipedia.org/wiki/Fortran">Fortran</a>, R est une implémentation du langage <a href="https://en.wikipedia.org/wiki/S_(programming_language)">S</a> qui supporte plusieurs paradigmes de programmation tel que : procédural, orienté objet, fonctionnel, réflexif, impératif, tableau.</p>
-<p>Depuis sa création, le langage a fortement évolué grâce à la contribution de sa communauté d’utilisateurs notamment par la publications de packages et de tutoriels. Cette évolution a permis d’étendre les fonctionnalités de ce langage à la rédaction d’ouvrage avec <a href="https://bookdown.org/">bookdown</a>, d’article et de présentations avec <a href="https://rmarkdown.rstudio.com/">R markdown</a>, à la représentation graphique avec <a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">ggplot2</a> etc.
-Rien que sur le CRAN (Comprehensive R Archive Network) on peut trouver plus de 1800 packages.</p>
-<p>Dans le chapitre suivant nous allons voir les bases de la programmation avec R en utilisant le logiciel <a href="https://www.rstudio.com/">RStudio</a>.</p>
+<div id="processus-linéaires-et-processus-linéaires-généraux" class="section level2" number="11.1">
+<h2>
+<span class="header-section-number">11.1</span> Processus linéaires et processus linéaires généraux<a class="anchor" aria-label="anchor" href="#processus-lin%C3%A9aires-et-processus-lin%C3%A9aires-g%C3%A9n%C3%A9raux"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="les-processus-armapq" class="section level2" number="11.2">
+<h2>
+<span class="header-section-number">11.2</span> Les processus ARMA(p,q)<a class="anchor" aria-label="anchor" href="#les-processus-armapq"><i class="fas fa-link"></i></a>
+</h2>
+<div id="processusmaq" class="section level3" number="11.2.1">
+<h3>
+<span class="header-section-number">11.2.1</span> ProcessusMA(q)<a class="anchor" aria-label="anchor" href="#processusmaq"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="processus-arp" class="section level3" number="11.2.2">
+<h3>
+<span class="header-section-number">11.2.2</span> Processus AR(p)<a class="anchor" aria-label="anchor" href="#processus-arp"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+</div>
+<div id="autocovariance-des-processus-arma" class="section level2" number="11.3">
+<h2>
+<span class="header-section-number">11.3</span> Autocovariance des processus ARMA<a class="anchor" aria-label="anchor" href="#autocovariance-des-processus-arma"><i class="fas fa-link"></i></a>
+</h2>
 
 </div>
+</div>
   <div class="chapter-nav">
-<div class="prev"><a href="index.html">Bienvenue</a></div>
-<div class="next"><a href="base.html"><span class="header-section-number">2</span> les bases</a></div>
+<div class="prev"><a href="tendances-et-saisonnalit%C3%A9s.html"><span class="header-section-number">10</span> Tendances et saisonnalités</a></div>
+<div class="next"><a href="proc-non-stat.html"><span class="header-section-number">12</span> Séries non stationnaires</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#intro1"><span class="header-section-number">1</span> Introduction</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#series-stat"><span class="header-section-number">11</span> Séries stationnaires</a></li>
+<li><a class="nav-link" href="#processus-lin%C3%A9aires-et-processus-lin%C3%A9aires-g%C3%A9n%C3%A9raux"><span class="header-section-number">11.1</span> Processus linéaires et processus linéaires généraux</a></li>
+<li>
+<a class="nav-link" href="#les-processus-armapq"><span class="header-section-number">11.2</span> Les processus ARMA(p,q)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#processusmaq"><span class="header-section-number">11.2.1</span> ProcessusMA(q)</a></li>
+<li><a class="nav-link" href="#processus-arp"><span class="header-section-number">11.2.2</span> Processus AR(p)</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#autocovariance-des-processus-arma"><span class="header-section-number">11.3</span> Autocovariance des processus ARMA</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/AODiakite/r4econometrics/blob/master/01-Start-R.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/AODiakite/r4econometrics/edit/master/01-Start-R.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/AODiakite/r4econometrics/blob/master/11-proc-stat.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/AODiakite/r4econometrics/edit/master/11-proc-stat.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

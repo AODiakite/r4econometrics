@@ -1,12 +1,15 @@
-# (PART) Débuter avec R {-}
+# (PART) I-Débuter avec R {-}
 # Introduction{#intro1} 
 
-All chapters start with a first-level heading followed by your chapter title, like the line above. There should be only one first-level heading (`#`) per .Rmd file.
+R est un langage de programmation créé par les staticiens [Ross Ihaka](https://en.wikipedia.org/wiki/Ross_Ihaka) et [Robert Gentleman](https://en.wikipedia.org/wiki/Robert_Gentleman_(statistician)).
+C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au traitement et manipulation de données.  C'est aussi un logiciel à accès libre (open-source) disponible sous la licence publique générale GNU ([GNU General Public License](https://en.wikipedia.org/wiki/GNU_General_Public_License
+)).
 
-## A section
+Principalement écrit en [C](https://en.wikipedia.org/wiki/C_(programming_language)) et [Fortran](https://en.wikipedia.org/wiki/Fortran), R est une implémentation du langage [S](https://en.wikipedia.org/wiki/S_(programming_language)) qui supporte plusieurs paradigmes de programmation tel que :  procédural, orienté objet, fonctionnel, réflexif, impératif, tableau.
 
-All chapter sections start with a second-level (`##`) or higher heading followed by your section title, like the sections above and below here. You can have as many as you want within a chapter.
+Depuis sa création, le langage a fortement évolué grâce à la contribution de sa communauté d’utilisateurs notamment par la publications de packages et de tutoriels. Cette évolution a permis d'étendre les fonctionnalités de ce langage à la rédaction d’ouvrage avec [bookdown](https://bookdown.org/), d’article et de présentations avec [R markdown](https://rmarkdown.rstudio.com/), à la représentation graphique avec [ggplot2](https://ggplot2.tidyverse.org/reference/geom_bar.html) etc.
+Rien que sur le CRAN (Comprehensive R Archive Network) on peut trouver plus de 1800 packages.
 
-### An unnumbered section {-}
+Dans le chapitre suivant nous allons voir les bases de la programmation avec R en utilisant le logiciel [RStudio](https://www.rstudio.com/).
 
-Chapters and sections are numbered by default. To un-number a heading, add a `{.unnumbered}` or the shorter `{-}` at the end of the heading, like in this section.
+

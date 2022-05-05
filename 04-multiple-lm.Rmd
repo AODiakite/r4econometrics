@@ -1,4 +1,4 @@
-# Footnotes and citations 
+# La régression linéaire multiple{#multiple-lm}
 
 ## Footnotes
 

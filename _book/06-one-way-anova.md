@@ -1,4 +1,4 @@
-# Sharing your book
+# Analyse de la variance à un facteur{#anova1}
 
 ## Publishing
 
@@ -21,7 +21,8 @@ https://pkgs.rstudio.com/bookdown/reference/bs4_book.html
 
 Or use:
 
-```{r eval=FALSE}
+
+```r
 ?bookdown::bs4_book
 ```
 
