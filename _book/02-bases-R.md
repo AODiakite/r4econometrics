@@ -361,7 +361,7 @@ Les fonctions peuvent retourner une valeur ou bien exécuter seulement un ensemb
 
 
 ```r
-mafonction = name <- function(arguments) {
+mafonction  <- function(arguments) {
   instructions
   return(valuer)
 }

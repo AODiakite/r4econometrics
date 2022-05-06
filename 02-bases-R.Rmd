@@ -270,7 +270,7 @@ Si dans un projet vous aurez à utiliser plusieurs fois un bloc d’instructions
 Les fonctions peuvent retourner une valeur ou bien exécuter seulement un ensemble d’instructions.
 
 ```{r, eval=FALSE}
-mafonction = name <- function(arguments) {
+mafonction  <- function(arguments) {
   instructions
   return(valuer)
 }
