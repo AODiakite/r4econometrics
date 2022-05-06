@@ -1,3 +1,6 @@
+tab:unnamed-chunk-3
+eq:lm
+eq:lm-simple
 eq:binom
 intro1
 base
@@ -14,6 +17,8 @@ les-boucles
 les-conditions
 les-fonctions
 simple-lm
+introduction
+modélisation-mathématique
 multiple-lm
 footnotes
 citations
@@ -49,5 +54,3 @@ définition-6
 modèles-arch
 modèles-garch
 modèlesarma-garch
-url-your-book-url-like-httpsbookdown.orgyihuibookdown
-introduction
