@@ -18,7 +18,9 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -99,16 +101,23 @@
 <h2>
 <span class="header-section-number">3.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
 </h2>
-<p><img src="Pictures/lm.png" class="cover" width="300" alt="Console">
-La régression linéaire simple est une méthode statistique permettant de trouver une relation linéaire entre une variable explicative <span class="math inline">\(X\)</span> et une variable à expliquer <span class="math inline">\(y\)</span>. Ce modèle consiste à considérer <span class="math inline">\(y\)</span> comme une fonction affine de <span class="math inline">\(X\)</span>. En d’autre terme, la régression linéaire a pour but de trouver une droite ajustée au nuage de points de <span class="math inline">\(y\)</span> en fonction de <span class="math inline">\(X\)</span>.<br>
-Dans ce chapitres nous allons voir en détail le modèle linéaire simple ainsi que son application avec R.
-Nous utiliserons les données de <a href="https://github.com/AODiakite/r4econometrics/blob/master/Data/income.data.csv">income</a> disponible sur github. Vous pouvez télécharger le jeux de données avec la fonction <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> disponible dans le package <code>readr</code> comme suit :</p>
+<p><img src="Pictures/lm.png" class="cover" width="300" alt="Console"> La régression linéaire
+simple est une méthode statistique permettant de trouver une relation
+linéaire entre une variable explicative <span class="math inline">\(X\)</span> et une variable à expliquer
+<span class="math inline">\(y\)</span>. Ce modèle consiste à considérer <span class="math inline">\(y\)</span> comme une fonction affine de
+<span class="math inline">\(X\)</span>. En d’autre terme, la régression linéaire a pour but de trouver une
+droite ajustée au nuage de points de <span class="math inline">\(y\)</span> en fonction de <span class="math inline">\(X\)</span>.<br>
+Dans ce chapitres nous allons voir en détail le modèle linéaire simple
+ainsi que son application avec R. Nous utiliserons les données de
+<a href="https://github.com/AODiakite/r4econometrics/blob/master/Data/income.data.csv">income</a>
+disponible sur github. Vous pouvez télécharger le jeux de données avec
+la fonction <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> disponible dans le package <code>readr</code> comme suit :</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
 <span class="va">income</span> <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://github.com/AODiakite/r4econometrics/blob/master/Data/income.data.csv"</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-3">Table 3.1: </span>Données pour la régression linéaire simple : income( niveau de revenu par 10 000$ ), happiness(score du bonheur entre 0 et 10), nombre d’observations(498)</caption>
+<span id="tab:unnamed-chunk-3">Table 3.1: </span>Données pour la régression linéaire simple : income( niveau de revenu par 10 000 dollars ), happiness(score du bonheur entre 0 et 10), nombre d’observations(498)</caption>
 <thead><tr class="header">
 <th align="right">income</th>
 <th align="right">happiness</th>
@@ -161,32 +170,311 @@ Nous utiliserons les données de <a href="https://github.com/AODiakite/r4econome
 <h2>
 <span class="header-section-number">3.2</span> Modélisation mathématique<a class="anchor" aria-label="anchor" href="#mod%C3%A9lisation-math%C3%A9matique"><i class="fas fa-link"></i></a>
 </h2>
-<p>L’ajuste affine de <span class="math inline">\(y\)</span> par <span class="math inline">\(X\)</span> stipule que que y peut s’écrire comme équation d’une droite :
+<p>L’ajustement affine de <span class="math inline">\(y\)</span> par <span class="math inline">\(X\)</span> stipule que que y peut s’écrire comme
+équation d’une droite :</p>
 <span class="math display" id="eq:lm">\[\begin{equation}
-y = \beta_0 + \beta_1 X
+y = \beta_0 + \beta_1 X  
 \tag{3.1}
-\end{equation}\]</span></p>
+\end{equation}\]</span>
 <ul>
 <li>
-<span class="math inline">\(y(y_1,y_2,\dots,y_n)\)</span> : variable à expliquer, variable dépendante, variable endogène, variable réponse<br>
+<span class="math inline">\(y(y_1,y_2,\dots,y_n)\)</span> : variable à expliquer, variable dépendante,
+variable endogène, variable réponse<br>
 </li>
 <li>
-<span class="math inline">\(X(x_1,x_2,\dots,x_n)\)</span> : variable explicative,variable exogène, Variable régresseur<br>
+<span class="math inline">\(X(x_1,x_2,\dots,x_n)\)</span> : variable explicative,variable exogène,
+Variable régresseur<br>
 </li>
 <li>
-<span class="math inline">\(\beta_0\)</span> : l’ordonnée à l’origine<br>
-</li>
+<span class="math inline">\(\beta_0\)</span> : l’ordonnée à l’origine, coefficient inconnu</li>
 <li>
-<span class="math inline">\(\beta_1\)</span> : la pente de la droite</li>
+<span class="math inline">\(\beta_1\)</span> : la pente de la droite, coefficient inconnu</li>
 </ul>
-<p>En réalité sauf dans le cas d’un modèle parfait, la liaison linéaire <a href="simple-lm.html#eq:lm">(3.1)</a> entre y et X est perturbée par un bruit <span class="math inline">\(\epsilon\)</span>. l’équation du modèle devient alors :<br><span class="math display" id="eq:lm-simple">\[\begin{equation}
+<p>En réalité sauf dans le cas d’un modèle parfait, la liaison linéaire
+<a href="simple-lm.html#eq:lm">(3.1)</a> entre y et X est perturbée par un bruit <span class="math inline">\(\epsilon\)</span>.
+l’équation du modèle devient alors :</p>
+<span class="math display" id="eq:lm-simple">\[\begin{equation}
 y = \beta_0 + \beta_1 X +\epsilon
 \tag{3.2}
 \end{equation}\]</span>
-<span class="math display">\[avec\; \epsilon\; un\; vecteur\; valant\; (\epsilon_1,\epsilon_2,\dots,\epsilon_n)\]</span></p>
+<p>La variable aléatoire <span class="math inline">\(\epsilon\)</span> est indépendante de <span class="math inline">\(X\)</span> et est supposée
+suivre une loi normale de moyenne <span class="math inline">\(0\)</span> et d’écart type <span class="math inline">\(\sigma\)</span> :</p>
+<p><span class="math display">\[ (\epsilon_1,\epsilon_2,\dots,\epsilon_n)= \epsilon \sim \mathcal{N}(0,\,\sigma^{2})\]</span></p>
+<p>Pour le jeu de données <code>income</code> nous allons prendre comme variable
+exogène <span class="math inline">\(X\)</span> les revenus des individus(<code>income</code>) et le niveau de
+bonheur(<code>happiness</code>) comme variable endogène <span class="math inline">\(y\)</span>. Ce choix n’est pas
+hasardeux, car dans la régression linéaire, la variable indépendante
+doit être déterministe c’est à un dire ne comportant pas de caractère
+aléatoire alors que la variable dépendante comporte quant à elle un
+bruit aléatoire <span class="math inline">\(\epsilon\)</span>.<br>
+Du fait que la moyenne de <span class="math inline">\(\epsilon\)</span> soit nulle, l’équation
+<a href="simple-lm.html#eq:lm-simple">(3.2)</a> revient juste à une estimation d’une moyenne
+conditionnelle :</p>
+<span class="math display" id="eq:lm-E">\[\begin{equation}
+\mathbb{E}(y_i|X_i) = \beta_0 + \beta_1 X_i
+\tag{3.3}
+\end{equation}\]</span>
+<p>La première étape lors d’une régression linéaire c’est la représentation
+graphique du nuage de points. En effet si le nuage ne s’apparente pas à
+une droite, la régression linéaire ne sera pas le meilleur modèle pour
+notre jeu de données. Dans cet ouvrage nous utiliserons le package
+ggplot2<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;ggplot2 :
+&lt;a href="https://r4ds.had.co.nz/data-visualisation.html" class="uri"&gt;https://r4ds.had.co.nz/data-visualisation.html&lt;/a&gt;&lt;/p&gt;'><sup>3</sup></a> pour nos représentations graphiques.</p>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span> <span class="co">#Chargement du package</span>
+<span class="va">fig1</span> <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">income</span>,<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span><span class="va">income</span>, y <span class="op">=</span> <span class="va">happiness</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">fig1</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:nuage1"></span>
+<img src="03-simple-lm_files/figure-html/nuage1-1.png" alt="A première vue, ce nuage admet bien une tendance linéaire." width="576"><p class="caption">
+Figure 3.1: A première vue, ce nuage admet bien une tendance linéaire.
+</p>
+</div>
+</div>
+<div id="OLS" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Estimateurs des moindres carrés ordinaires (<span class="math inline">\(MCO\)</span>)<a class="anchor" aria-label="anchor" href="#OLS"><i class="fas fa-link"></i></a>
+</h2>
+<p>La problématique du modèle<a href="simple-lm.html#eq:lm-simple">(3.2)</a>, c’est de trouver les
+coefficients <span class="math inline">\(\beta_i\)</span> qui donnent un meilleur ajustement linéaire de
+<span class="math inline">\(y\)</span>. Pour cela on a recours aux estimateurs des moindres qui carrés.
+Cette méthode consiste à trouver les coefficients qui minimise la
+quantité :</p>
+<span class="math display" id="eq:OLS">\[\begin{equation}
+
+(\beta_0,\beta_1) = \sum\limits^{n}_{i=1}(y_i -\beta_0-\beta_1 x_i)^2=\sum\limits^{n}_{i=1}\epsilon_i^2
+\tag{3.4}
+
+\end{equation}\]</span>
+<p>Les estimateurs <span class="math inline">\(\hat{\beta}_i\)</span> s’écrivent donc de la forme :</p>
+<p><span class="math display">\[(\hat\beta_0,\hat\beta_1) =\operatorname*{argmin}_{(\beta_0,\beta_1)\in \mathbb{R}\times\mathbb{R}}S(\beta_0,\beta_1)\]</span></p>
+<p>La fonction <span class="math inline">\(S\)</span> est strictement convexe donc si elle admet un point
+singulier, celui-ci correspondra à l’unique minimum. Les estimateurs des
+moindres carrés sont obtenus en résolvant le système d’équation qui
+annule les dérivées partielles de <span class="math inline">\(S\)</span> aux points <span class="math inline">\(\beta_i\)</span>. Le résultat
+de ce système est :</p>
+<p><span class="math display">\[\hat{\beta}_1 = \frac{\sum(x_i – \bar{x}) (y_i – \bar{y})} {\sum(x_i – \bar{x})^2} = \frac{Cov(X,y)}{Var(X)}\]</span>
+<span class="math display">\[\hat{\beta}_0 = \bar{y} – \hat{\beta}_1 \bar{x}\]</span>
+<span class="math display">\[avec\; :\; \bar{y} = \frac{1}{n}\sum\limits_{i=1}^n y_i\; et\; \bar{x} = \frac{1}{n}\sum\limits_{i=1}^n x_i \]</span></p>
+<p>La fonction <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> permet d’entrainer un modèle linéaire sur R. Dans
+notre exemple, on procède ainsi :</p>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lm_simple</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">happiness</span><span class="op">~</span><span class="va">income</span>, data <span class="op">=</span> <span class="va">income</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">lm_simple</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; lm(formula = happiness ~ income, data = income)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residuals:</span>
+<span class="co">#&gt;      Min       1Q   Median       3Q      Max </span>
+<span class="co">#&gt; -2.02479 -0.48526  0.04078  0.45898  2.37805 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span>
+<span class="co">#&gt; (Intercept)  0.20427    0.08884   2.299   0.0219 *  </span>
+<span class="co">#&gt; income       0.71383    0.01854  38.505   &lt;2e-16 ***</span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  </span>
+<span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residual standard error: 0.7181 on 496 degrees of freedom</span>
+<span class="co">#&gt; Multiple R-squared:  0.7493, Adjusted R-squared:  0.7488 </span>
+<span class="co">#&gt; F-statistic:  1483 on 1 and 496 DF,  p-value: &lt; 2.2e-16</span></code></pre></div>
+<p>La sortie précédente indique une matrice (<strong>Coefficients</strong>) de 5
+colonnes.</p>
+<ul>
+<li><p><strong>Estimate</strong> : les estimations des paramètres. Dans notre exemple,
+<span class="math inline">\(\beta_0 = 0.20427\)</span> et <span class="math inline">\(\beta_1 = 0.71383\)</span>.</p></li>
+<li><p><strong>Std. Error</strong> : les écarts-types estimés des coefficients.</p></li>
+<li><p><strong>t value</strong> : La valeur observée de la statistique de test
+d’hypothèses
+<span class="math inline">\(\begin{cases} H_0: \beta_i = 0 \\ H_1: \beta_i \neq 0 \end{cases}\)</span></p></li>
+<li><p><strong>Pr(&gt;|t|)</strong> : la probabilité critique (ou « p-value ») qui est la
+probabilité, pour la statistique de test sous <span class="math inline">\(H_0\)</span>, de dépasser la
+valeur estimée.</p></li>
+<li><p>La dernière colonne est une indication sur le résultat des tests. Si
+elle est vide cela signifie qu’on ne peut pas rejeter l’hypothèse
+<span class="math inline">\(H_0\)</span>. Par contre si elle n’est pas vide ce qu’on rejette
+l’hypothèse <span class="math inline">\(H_0\)</span> au seuil significatif correspondant au symbole
+(<code>***</code>: 0.001, <code>**</code>: 0.01, <code>*</code>: 0.05, <code>.</code>: 0.1)</p></li>
+</ul>
+<p>Les « p-value » de notre exemple sont toutes inferieures à
+<span class="math inline">\(\alpha = 5\%\)</span>, on peut donc rejeter l’hypothèse nulle pour un niveau de
+confiance de <span class="math inline">\(95\%\)</span>.<br>
+En plus des informations sur les coefficients, la sortie de la fonction
+<code>summary</code> modèle renseigne aussi sur :</p>
+<ul>
+<li>
+<strong>Residual standard error</strong> : l’estimation de <span class="math inline">\(\sigma\)</span> de <span class="math inline">\(\epsilon\)</span>
+qui vaut <span class="math inline">\(0.7181\)</span>
+</li>
+<li>
+<strong>Degrees of freedom</strong> : le nombre de degré de liberté associe
+(<span class="math inline">\(n-2 = 496\)</span>)</li>
+</ul>
+</div>
+<div id="le-coefficient-de-détermination-r2" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> Le coefficient de détermination (<span class="math inline">\(R^2\)</span>)<a class="anchor" aria-label="anchor" href="#le-coefficient-de-d%C3%A9termination-r2"><i class="fas fa-link"></i></a>
+</h2>
+<p>La qualité d’un modèle dépend de combien les <span class="math inline">\(\hat{y}_i\)</span> estimés sont
+proches des <span class="math inline">\(y\)</span> observés. Le coefficient de détermination est la
+quantité :</p>
+<p><span class="math display">\[R^2 = \frac{SCT}{SCE}\]</span>
+avec :<br><span class="math display">\[
+\underbrace{\sum\limits_{i=1}^{n}(y_{i}-\overline{y})^2}_{SCT}=\underbrace{\sum\limits_{i=1}^{n}(\hat{y}_{i}-\overline{y})^2}_{SCE}+\underbrace{\sum\limits_{j=1}^n (y_i-\hat{y_i})^2}_{SCR}
+\]</span></p>
+<p>où <span class="math inline">\(SCT\)</span>(somme des carrés totaux), <span class="math inline">\(SCR\)</span>( somme des carrés résiduels) et
+<span class="math inline">\(SCE\)</span>(somme des carrés expliqués).</p>
+<p>Ce coefficient correspond à
+<strong>Multiple R-squared</strong> dans la sortie de la fonction
+<code>summary(lm_simple)</code>.<br>
+La qualité du modèle dépend donc de combien <span class="math inline">\(R^2\)</span> est proche de <span class="math inline">\(1\)</span>.
+Plus <span class="math inline">\(R^2\)</span> est proche de <span class="math inline">\(1\)</span> plus notre modèle est bon.<br>
+Dans notre exemple le coefficient de détermination est de <span class="math inline">\(0.7493\)</span>.
+Sachant qu’un bon coefficient est de l’ordre de <span class="math inline">\(0.85\)</span>, le nôtre est
+assez faible dans ce cas.</p>
+</div>
+<div id="représentations-graphiques" class="section level2" number="3.5">
+<h2>
+<span class="header-section-number">3.5</span> Représentations graphiques<a class="anchor" aria-label="anchor" href="#repr%C3%A9sentations-graphiques"><i class="fas fa-link"></i></a>
+</h2>
+<div id="la-droite-de-régression" class="section level3" number="3.5.1">
+<h3>
+<span class="header-section-number">3.5.1</span> La droite de régression<a class="anchor" aria-label="anchor" href="#la-droite-de-r%C3%A9gression"><i class="fas fa-link"></i></a>
+</h3>
+<p>Avec ggplot2, il est très simple de représenter la droite de régression
+avec la fonction <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code>. Nous allons l’ajouter à notre objet
+<code>fig1</code> <a href="simple-lm.html#fig:nuage1">3.1</a> en spécifiant la <code>methode = "lm"</code>.</p>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fig1</span> <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">income</span>,<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span><span class="va">income</span>, y <span class="op">=</span> <span class="va">happiness</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span>
+<span class="va">fig1</span>
+<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:lm1"></span>
+<img src="03-simple-lm_files/figure-html/lm1-1.png" alt="La droite de régression" width="576"><p class="caption">
+Figure 3.2: La droite de régression
+</p>
+</div>
+</div>
+<div id="graphes-des-résidus" class="section level3" number="3.5.2">
+<h3>
+<span class="header-section-number">3.5.2</span> Graphes des résidus<a class="anchor" aria-label="anchor" href="#graphes-des-r%C3%A9sidus"><i class="fas fa-link"></i></a>
+</h3>
+<p>On peut visualiser les résidus <span class="math inline">\(\hat\epsilon_i = y_i -\hat y_i\)</span> afin de
+voir leur dispersion autour de la moyenne <span class="math inline">\(0\)</span>. Les résidus peuvent être
+obtenu dans le modèle entrainé <code>lm_simple</code>, on y accède par
+<code>$residuals</code>.</p>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">X</span> <span class="op">=</span> <span class="va">income</span><span class="op">$</span><span class="va">income</span>
+<span class="va">residuals_</span> <span class="op">=</span> <span class="va">lm_simple</span><span class="op">$</span><span class="va">residuals</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>,y <span class="op">=</span><span class="va">residuals_</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>slope <span class="op">=</span> <span class="fl">0</span>, intercept <span class="op">=</span> <span class="fl">0</span>, color <span class="op">=</span> <span class="st">'red'</span>,size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="03-simple-lm_files/figure-html/unnamed-chunk-6-1.png" alt="On voit bien que nos résidus se disperse de part et d’autre de 0 " width="576"><p class="caption">
+Figure 3.3: On voit bien que nos résidus se disperse de part et d’autre de 0
+</p>
+</div>
+<p>On peut aussi ajouter des sagements dans la figure <a href="simple-lm.html#fig:lm1">3.2</a> pour
+visualiser les résidus. Nous allons choisir juste un échantillon de 50
+observations.</p>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Les indices choisis au hasard</span>
+<span class="va">echantillon</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">498</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span><span class="op">]</span>
+<span class="co"># Echantillon des revenu</span>
+<span class="va">X_residuals</span> <span class="op">=</span> <span class="va">X</span><span class="op">[</span><span class="va">echantillon</span><span class="op">]</span>
+<span class="co"># echention du niveau de bonheur</span>
+<span class="va">y</span> <span class="op">=</span> <span class="va">income</span><span class="op">$</span><span class="va">happiness</span><span class="op">[</span><span class="va">echantillon</span><span class="op">]</span>
+<span class="co"># les y estimes correspondants a l'echantillon</span>
+<span class="va">y_hat</span> <span class="op">=</span> <span class="va">lm_simple</span><span class="op">$</span><span class="va">fitted.values</span><span class="op">[</span><span class="va">echantillon</span><span class="op">]</span>
+
+<span class="co"># Representation de l'echantillon </span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span> 
+  <span class="co"># nuage de points</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">income</span>,<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span><span class="va">income</span>, y <span class="op">=</span> <span class="va">happiness</span><span class="op">)</span>,alpha <span class="op">=</span><span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span>
+  <span class="co"># droite de regression</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">income</span>,<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span><span class="va">income</span>, y <span class="op">=</span> <span class="va">happiness</span><span class="op">)</span>, method <span class="op">=</span> <span class="st">'lm'</span><span class="op">)</span> <span class="op">+</span>
+  <span class="co"># echantillon de y</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span> x<span class="op">=</span> <span class="va">X_residuals</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span>, color <span class="op">=</span><span class="st">'red'</span>, size <span class="op">=</span> <span class="fl">2</span>,<span class="op">)</span> <span class="op">+</span>
+  <span class="co">#les erreurs</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X_residuals</span>, y <span class="op">=</span> <span class="va">y_hat</span>, xend <span class="op">=</span> <span class="va">X_residuals</span>, yend <span class="op">=</span> <span class="va">y</span><span class="op">)</span>,color <span class="op">=</span> <span class="st">'red'</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:residuals"></span>
+<img src="03-simple-lm_files/figure-html/residuals-1.png" alt="Les segments en rouges repressentent l’écart entre les valeurs estimées et les valeurs mesurées du niveau de bonheur (happiness)" width="576"><p class="caption">
+Figure 3.4: Les segments en rouges repressentent l’écart entre les valeurs estimées et les valeurs mesurées du niveau de bonheur (happiness)
+</p>
+</div>
+</div>
+</div>
+<div id="prédiction" class="section level2" number="3.6">
+<h2>
+<span class="header-section-number">3.6</span> Prédiction<a class="anchor" aria-label="anchor" href="#pr%C3%A9diction"><i class="fas fa-link"></i></a>
+</h2>
+<p>Le but final d’une régression c’est de prédire des variables à
+expliquées sans avoir à faire des mesures. Pour une nouvelle valeur de
+<span class="math inline">\(X\)</span> nous cherchons quel serait le <span class="math inline">\(y\)</span> à partir de notre modèle.
+Cette prédiction peut se faire sur R avec la fonction <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code>.<br>
+On va reprendre notre modèle <code>lm_simple</code> sauf que cette fois-ci, nous
+n’allons pas entrainer un échantillon de <span class="math inline">\(100\)</span> observations qui
+représentent <span class="math inline">\(20\%\)</span> de notre jeu de données <code>income</code>.</p>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span> <span class="co"># pour fixer une racine a la fonction sample</span>
+<span class="va">echantillon</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">498</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">]</span> <span class="co"># indices de nos echantillons</span>
+<span class="va">data_train</span> <span class="op">=</span> <span class="va">income</span><span class="op">[</span><span class="op">-</span><span class="va">echantillon</span>,<span class="op">]</span> <span class="co"># data a entrainer</span>
+<span class="va">data_test</span> <span class="op">=</span> <span class="va">income</span><span class="op">[</span><span class="va">echantillon</span>,<span class="op">]</span> <span class="co"># data non entrainé</span>
+<span class="va">lm_simple</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data_train</span>, formula <span class="op">=</span> <span class="va">happiness</span><span class="op">~</span><span class="va">income</span><span class="op">)</span> <span class="co"># entrainement du modele</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># prediction des y correspondants a notre echantillon de X</span>
+<span class="va">y_predict</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">lm_simple</span>, newdata <span class="op">=</span> <span class="va">data_test</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span>
+<span class="va">y_predict</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span> <span class="co"># Affichage des 10 premiers elements </span>
+<span class="co">#&gt;        1        2        3        4        5        6 </span>
+<span class="co">#&gt; 1.577312 5.114610 4.689354 4.817752 1.968143 1.504369 </span>
+<span class="co">#&gt;        7        8        9       10 </span>
+<span class="co">#&gt; 1.324728 3.422421 4.913247 3.493572</span></code></pre></div>
+<p>On peut visualiser la qualité de notre prédiction en représentant en
+abscisse les <code>y_test</code> et en ordonnée les <code>y_predict</code>. Pour un modèle
+parfait, le nuage de point doit être sur la première
+bissectrice<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;la première bissectrice est une droite du plan muni d’un
+repère orthonormé, caractérisée par l’équation y = x&lt;/p&gt;"><sup>4</sup></a>.</p>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y_test</span> <span class="op">=</span> <span class="va">data_test</span><span class="op">$</span><span class="va">happiness</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y_test</span>, y <span class="op">=</span> <span class="va">y_predict</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>slope <span class="op">=</span> <span class="fl">1</span>, color <span class="op">=</span><span class="st">'darkred'</span><span class="op">)</span>  <span class="co"># première bissectrice</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-9"></span>
+<img src="03-simple-lm_files/figure-html/unnamed-chunk-9-1.png" alt="Représentations des y prédits en fonctions des y observés" width="576"><p class="caption">
+Figure 3.5: Représentations des y prédits en fonctions des y observés
+</p>
+</div>
+<p>Comme dans la figure<a href="simple-lm.html#fig:residuals">3.4</a>, nous pouvons représenter les
+écarts entre les y prédits et les y observés sous forme de segments.</p>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x_test</span> <span class="op">=</span> <span class="va">data_test</span><span class="op">$</span><span class="va">income</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span><span class="va">data_test</span>,<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">income</span>,<span class="va">happiness</span><span class="op">)</span>,color <span class="op">=</span> <span class="st">'green'</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x_test</span>, y <span class="op">=</span><span class="va">y_predict</span><span class="op">)</span>, color <span class="op">=</span><span class="st">'blue'</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span><span class="va">x_test</span> , 
+                   y <span class="op">=</span> <span class="va">y_test</span>, xend <span class="op">=</span> <span class="va">x_test</span>, yend <span class="op">=</span> <span class="va">y_predict</span><span class="op">)</span>,color <span class="op">=</span> <span class="st">'red'</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-10"></span>
+<img src="03-simple-lm_files/figure-html/unnamed-chunk-10-1.png" alt="Les segments en rouges représentent les résidus, les points verts les y non entrainés qui ont servi au test et les points rouges représentent les y prédits à partir de notre modèle." width="576"><p class="caption">
+Figure 3.6: Les segments en rouges représentent les résidus, les points verts les y non entrainés qui ont servi au test et les points rouges représentent les y prédits à partir de notre modèle.
+</p>
+</div>
+</div>
+<div id="référence" class="section level2 unnumbered">
+<h2>Référence<a class="anchor" aria-label="anchor" href="#r%C3%A9f%C3%A9rence"><i class="fas fa-link"></i></a>
+</h2>
+<p><span class="citation">Pierre-André Cornillon et Éric Matzner-Løber<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;&lt;em&gt;Régression Théorie Et Applications&lt;/em&gt; (France, Paris: Springer-Verlag, 2007).&lt;/p&gt;"><sup>5</sup></a></span></p>
 
 </div>
 </div>
+
   <div class="chapter-nav">
 <div class="prev"><a href="base.html"><span class="header-section-number">2</span> les bases</a></div>
 <div class="next"><a href="multiple-lm.html"><span class="header-section-number">4</span> La régression linéaire multiple</a></div>
@@ -196,6 +484,16 @@ y = \beta_0 + \beta_1 X +\epsilon
 <li><a class="nav-link" href="#simple-lm"><span class="header-section-number">3</span> La régression linéaire simple</a></li>
 <li><a class="nav-link" href="#introduction"><span class="header-section-number">3.1</span> Introduction</a></li>
 <li><a class="nav-link" href="#mod%C3%A9lisation-math%C3%A9matique"><span class="header-section-number">3.2</span> Modélisation mathématique</a></li>
+<li><a class="nav-link" href="#OLS"><span class="header-section-number">3.3</span> Estimateurs des moindres carrés ordinaires (\(MCO\))</a></li>
+<li><a class="nav-link" href="#le-coefficient-de-d%C3%A9termination-r2"><span class="header-section-number">3.4</span> Le coefficient de détermination (\(R^2\))</a></li>
+<li>
+<a class="nav-link" href="#repr%C3%A9sentations-graphiques"><span class="header-section-number">3.5</span> Représentations graphiques</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#la-droite-de-r%C3%A9gression"><span class="header-section-number">3.5.1</span> La droite de régression</a></li>
+<li><a class="nav-link" href="#graphes-des-r%C3%A9sidus"><span class="header-section-number">3.5.2</span> Graphes des résidus</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#pr%C3%A9diction"><span class="header-section-number">3.6</span> Prédiction</a></li>
+<li><a class="nav-link" href="#r%C3%A9f%C3%A9rence">Référence</a></li>
 </ul>
 
       <div class="book-extra">

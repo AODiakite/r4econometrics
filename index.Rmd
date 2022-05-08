@@ -19,13 +19,6 @@ csl: chicago-fullnote-bibliography.csl
 
 # Bienvenue{.unnumbered}
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
+Au cours des dernières années, le langage de programmation statistique R est devenu une partie intégrante des programmes des cours d'économétrie. Nous avons régulièrement constaté qu'une grande partie des étudiants, en particulier dans nos cours d'introduction à l'économétrie de premier cycle, n'ont jamais été exposés à aucun langage de programmation et ont donc des difficultés à s'engager seuls dans l'apprentissage de R. Avec peu d'expérience en statistiques et en économétrie, il est naturel que les débutants aient du mal à comprendre les avantages d'avoir des compétences en R pour apprendre et appliquer l'économétrie. Celles-ci incluent en particulier la capacité de mener, de documenter et de communiquer des études empiriques et d'avoir les installations nécessaires pour programmer des études de simulation, ce qui est utile, par exemple, pour comprendre et valider des théorèmes qui ne sont généralement pas facilement saisis en ruminant simplement sur des formules. En tant qu'économistes appliqués et économètres, tous ces derniers sont des capacités que nous apprécions et que nous souhaitons partager.  
 
-## Remerciements{.unnumbered} 
-
-Each **bookdown** chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter *must* start with a first-level heading: `# A good chapter`, and can contain one (and only one) first-level heading.
-
-Use second-level and higher headings within chapters like: `## A short section` or `### An even shorter section`.
-
-The `index.Rmd` file is required, and is also your first book chapter. It will be the homepage when you render the book.
-
+Il s'agit d'un script interactif dans le style d'un rapport de recherche reproductible et permet aux étudiants non seulement d'apprendre comment les résultats d'études de cas peuvent être reproduits avec R, mais renforce également leur capacité à utiliser les compétences nouvellement acquises dans d'autres applications empiriques.

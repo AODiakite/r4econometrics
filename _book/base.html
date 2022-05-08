@@ -18,7 +18,9 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -108,9 +110,9 @@ L’interface RStudio se présente ainsi par défaut. Nous pouvons voir une cons
 </li>
 <li>La partie dédiée au <em>scripts</em> permet d’écrire un ensemble de lignes de codes qui peuvent être exécutées par ordre voulu par l’utilisateur. En plus des scripts, on peut y visualiser nos tableaux de données qui sont décrits dans la section <a href="base.html#dataframe">2.3.5</a>.<br>
 </li>
-<li>Les graphes peuvent être visibles dans la partie <em>Plots</em> de notre interface. Cette partie est un panneau contenant les onglets <em>Viewer</em> pour les pages html, <em>Files</em> pour naviguer dans les fichiers, <em>Packages</em> pour gérer les packages installes et <em>Help</em> pour chercher de l’aide.<br>
+<li>Les graphes peuvent être visibles dans la partie <em>Plots</em> de notre interface. Cette partie est un panneau contenant les onglets <em>Viewer</em> pour les pages html, <em>Files</em> pour naviguer dans les fichiers, <em>Packages</em> pour gérer les packages installés et <em>Help</em> pour chercher de l’aide.<br>
 </li>
-<li>La dernière partie c’est à dire <em>Environment</em> est consacrée à la gestion de l’environnement de travail. Elle permet de voir les variable créé lors de notre session mais aussi d’avoir une idée sur leur structure</li>
+<li>La dernière partie c’est à dire <em>Environment</em> est consacrée à la gestion de l’environnement de travail. Elle permet de voir les variables créés lors de notre session mais aussi d’avoir une idée sur leur structure</li>
 </ul>
 </div>
 <div id="firstcode" class="section level2" number="2.2">
@@ -123,7 +125,7 @@ Dans la section précédente nous avons présenté brièvement l’interface de 
 <code class="sourceCode R"><span class="fl">2</span><span class="op">+</span><span class="fl">3</span>
 <span class="co">#&gt; [1] 5</span></code></pre></div>
 <p>Le résultat obtenu est tout naturellement <code>5</code>. Vous constatez que <code>[1]</code> précède le résultat de l’opération, en effet l’affichage se fait par défaut sous forme d’une liste<a href="base.html#list">2.3.3</a>.<br>
-La console peut être utilisée comme une calculatrice et supporte toute les opération arithmétique telle que la soustraction(<code>-</code>), l’addition(<code>+</code>), la multiplication(<code>*</code>), la division décimale(<code>/</code>), la division entière(<code>%/%</code>), le modulo<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;modulo : Cet opérateur renvoi le reste de la division entre deux nombres&lt;/p&gt;"><sup>1</sup></a> (<code>%%</code>).<br>
+La console peut être utilisée comme une calculatrice et supporte toutes les opérations arithmétiques telles que la soustraction(<code>-</code>), l’addition(<code>+</code>), la multiplication(<code>*</code>), la division décimale(<code>/</code>), la division entière(<code>%/%</code>), le modulo<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;modulo : Cet opérateur renvoi le reste de la division entre deux nombres&lt;/p&gt;"><sup>1</sup></a> (<code>%%</code>).<br>
 Le symbole (<code>#</code>) sert à écrire une ligne de commentaire.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">1</span><span class="op">+</span><span class="fl">2</span> <span class="co">#addition</span>
@@ -161,7 +163,7 @@ Il arrive qu’une structure de données se compose de types simples données, c
 </li>
 <li>Éléments de même type (Toutes les valeurs contenues dans un vecteur sont de même type)<br>
 </li>
-<li>Longueure égale au nombre d’éléments</li>
+<li>Longueur égale au nombre d’éléments</li>
 </ul>
 </div>
 <div id="création" class="section level4 unnumbered">
@@ -180,7 +182,7 @@ Il arrive qu’une structure de données se compose de types simples données, c
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">myvector</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>
 <span class="co">#&gt; [1] 2 3 4 5</span></code></pre></div>
-<p>Il se peut qu’on veuille créer une séquence de valeurs avec un pas spécifié. Un exemple concret c’est de vouloir créer un vecteur nommé <code>evenVector</code> contenant tous les nombres pairs compris entre 0 et 100. L’utilisation de la fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> rendrait le travail fastidieux. La fonction <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> est plus adaptée à notre situation. Elle prend comme argument fom(le début de la séquence), to(la fin de la séquence), by(le pas de la séquence), etc. Pour en savoir plus vous pouvez exécuter la commande <code>?seq()</code>.</p>
+<p>Il se peut qu’on veuille créer une séquence de valeurs avec un pas spécifié. Un exemple concret c’est de vouloir créer un vecteur nommé <code>evenVector</code> contenant tous les nombres pairs compris entre 0 et 100. L’utilisation de la fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> rendrait le travail fastidieux. La fonction <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> est plus adaptée à notre situation. Elle prend comme argument from(le début de la séquence), to(la fin de la séquence), by(le pas de la séquence), etc. Pour en savoir plus vous pouvez exécuter la commande <code>?seq()</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">evenVector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">100</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="co">#Création </span>
 <span class="va">evenVector</span> <span class="co">#Affichage</span>
@@ -280,7 +282,7 @@ On se propose de transformer en facteur le vecteur <code>animal</code> de modali
 <div id="définition-3" class="section level4 unnumbered">
 <h4>Définition<a class="anchor" aria-label="anchor" href="#d%C3%A9finition-3"><i class="fas fa-link"></i></a>
 </h4>
-<p>Un matrice est un un tableau dont les colonnes sont des vecteurs de même type et de même taille. Autrement dit, la matrice est un objet de deux dimensions dont tous les éléments sont de type homogène. R ne considère pas un vecteur comme une matrice colonne ou ligne, ce sont deux types de structures différentes.</p>
+<p>Une matrice est un un tableau dont les colonnes sont des vecteurs de même type et de même taille. Autrement dit, la matrice est un objet de deux dimensions dont tous les éléments sont de type homogène. R ne considère pas un vecteur comme une matrice colonne ou ligne, ce sont deux types de structures différentes.</p>
 </div>
 <div id="création-3" class="section level4 unnumbered">
 <h4>Création<a class="anchor" aria-label="anchor" href="#cr%C3%A9ation-3"><i class="fas fa-link"></i></a>
@@ -341,7 +343,7 @@ On peut afficher une ligne (respectivement une colonne )toute entière en spéci
 <div id="création-4" class="section level4 unnumbered">
 <h4>Création<a class="anchor" aria-label="anchor" href="#cr%C3%A9ation-4"><i class="fas fa-link"></i></a>
 </h4>
-<p>La fonction <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code> permet de créer un un tableau de données. Elle prend en argument des vecteurs de même longueur. Il en existe d’autres arguments pour cette fonction, pour en savoir plus vous pouvez exécuter <code>?data.frame()</code>.</p>
+<p>La fonction <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code> permet de créer un tableau de données. Elle prend en argument des vecteurs de même longueur. Il en existe d’autres arguments pour cette fonction, pour en savoir plus vous pouvez exécuter <code>?data.frame()</code>.</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>,<span class="fl">67</span>,<span class="fl">13</span><span class="op">)</span>
 <span class="va">y</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'C'</span><span class="op">)</span>
@@ -351,7 +353,7 @@ On peut afficher une ligne (respectivement une colonne )toute entière en spéci
 <span class="co">#&gt; 1 12 A</span>
 <span class="co">#&gt; 2 67 B</span>
 <span class="co">#&gt; 3 13 C</span></code></pre></div>
-<p>L’accès à un élément peut se faire de la même manière qu’avec les matrices. Pour accéder à une colonne par son nom on utilise le symbole <code>$</code> comme dans la section liste. Les codes suivants permettent d’accéder à l’élément “B” de <code>tableau</code> de plusieurs façons.</p>
+<p>L’accès à un élément peut se faire de la même manière qu’avec les matrices. Pour accéder à une colonne par son nom on utilise le symbole <code>$</code> comme dans la section liste. Les codes suivants permettent d’accéder à l’élément “B” du <code>tableau</code> de plusieurs façons.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Indexiation</span>
 <span class="va">tableau</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span>
@@ -383,7 +385,7 @@ On peut afficher une ligne (respectivement une colonne )toute entière en spéci
 <code class="sourceCode R"><span class="kw">for</span> <span class="op">(</span><span class="va">variable</span> <span class="kw">in</span> <span class="va">vector</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">statements</span>
 <span class="op">}</span></code></pre></div>
-<p>Un exemple de création d’un vecteur de 5 éléments contenant les carré des nombre compris entre 1 et 5</p>
+<p>Un exemple de création d’un vecteur de 5 éléments contenant les carrés des nombre compris entre 1 et 5</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Initialisation</span>
 <span class="va">carrevector</span> <span class="op">=</span> <span class="fl">0</span>
@@ -468,7 +470,7 @@ Les fonctions peuvent retourner une valeur ou bien exécuter seulement un ensemb
 <div id="liens-utils" class="section level2 unnumbered">
 <h2>Liens utils<a class="anchor" aria-label="anchor" href="#liens-utils"><i class="fas fa-link"></i></a>
 </h2>
-<p><span class="citation">Emmanuel Paradis<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;&lt;span&gt;R&lt;/span&gt; Pour Les d´ebutants&lt;/em&gt;, 2005, &lt;a href="https://cran.r-project.org/doc/contrib/Paradis-rdebuts_fr.pdf" role="doc-biblioref"&gt;https://cran.r-project.org/doc/contrib/Paradis-rdebuts_fr.pdf&lt;/a&gt;.&lt;/p&gt;'><sup>2</sup></a></span><br><a href="https://cran.r-project.org/doc/contrib/Paradis-rdebuts_fr.pdf" class="uri">https://cran.r-project.org/doc/contrib/Paradis-rdebuts_fr.pdf</a></p>
+<p><span class="citation">Emmanuel Paradis<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;&lt;span&gt;R&lt;/span&gt; Pour Les Débutants&lt;/em&gt;, 2005, &lt;a href="https://cran.r-project.org/doc/contrib/Paradis-rdebuts_fr.pdf" role="doc-biblioref"&gt;https://cran.r-project.org/doc/contrib/Paradis-rdebuts_fr.pdf&lt;/a&gt;.&lt;/p&gt;'><sup>2</sup></a></span><br><a href="https://cran.r-project.org/doc/contrib/Paradis-rdebuts_fr.pdf" class="uri">https://cran.r-project.org/doc/contrib/Paradis-rdebuts_fr.pdf</a></p>
 
 </div>
 </div>

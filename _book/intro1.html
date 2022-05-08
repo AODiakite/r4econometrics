@@ -6,19 +6,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>1 Introduction | R pour l’économétrie</title>
 <meta name="author" content="Abdoul Oudouss Diakite">
-<meta name="description" content="R est un langage de programmation créé par les staticiens Ross Ihaka et Robert Gentleman. C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au...">
+<meta name="description" content="R est un langage de programmation créé par les staticiens Ross Ihaka et Robert Gentleman. C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout ce qui se rattache au...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
 <meta property="og:title" content="1 Introduction | R pour l’économétrie">
 <meta property="og:type" content="book">
-<meta property="og:description" content="R est un langage de programmation créé par les staticiens Ross Ihaka et Robert Gentleman. C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au...">
+<meta property="og:description" content="R est un langage de programmation créé par les staticiens Ross Ihaka et Robert Gentleman. C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout ce qui se rattache au...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1 Introduction | R pour l’économétrie">
 <meta name="twitter:site" content="@abdouloudouss">
-<meta name="twitter:description" content="R est un langage de programmation créé par les staticiens Ross Ihaka et Robert Gentleman. C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au...">
+<meta name="twitter:description" content="R est un langage de programmation créé par les staticiens Ross Ihaka et Robert Gentleman. C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout ce qui se rattache au...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -96,10 +98,10 @@
 <span class="header-section-number">1</span> Introduction<a class="anchor" aria-label="anchor" href="#intro1"><i class="fas fa-link"></i></a>
 </h1>
 <p>R est un langage de programmation créé par les staticiens <a href="https://en.wikipedia.org/wiki/Ross_Ihaka">Ross Ihaka</a> et <a href="https://en.wikipedia.org/wiki/Robert_Gentleman_(statistician)">Robert Gentleman</a>.
-C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout se qui se rattache au traitement et manipulation de données. C’est aussi un logiciel à accès libre (open-source) disponible sous la licence publique générale GNU (<a href="https://en.wikipedia.org/wiki/GNU_General_Public_License">GNU General Public License</a>).</p>
+C’est un langage dédié aux statistiques, représentations graphiques, ainsi que tout ce qui se rattache au traitement et manipulation de données. C’est aussi un logiciel à accès libre (open-source) disponible sous la licence publique générale GNU (<a href="https://en.wikipedia.org/wiki/GNU_General_Public_License">GNU General Public License</a>).</p>
 <p>Principalement écrit en <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> et <a href="https://en.wikipedia.org/wiki/Fortran">Fortran</a>, R est une implémentation du langage <a href="https://en.wikipedia.org/wiki/S_(programming_language)">S</a> qui supporte plusieurs paradigmes de programmation tel que : procédural, orienté objet, fonctionnel, réflexif, impératif, tableau.</p>
 <p>Depuis sa création, le langage a fortement évolué grâce à la contribution de sa communauté d’utilisateurs notamment par la publications de packages et de tutoriels. Cette évolution a permis d’étendre les fonctionnalités de ce langage à la rédaction d’ouvrage avec <a href="https://bookdown.org/">bookdown</a>, d’article et de présentations avec <a href="https://rmarkdown.rstudio.com/">R markdown</a>, à la représentation graphique avec <a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">ggplot2</a> etc.
-Rien que sur le CRAN (Comprehensive R Archive Network) on peut trouver plus de 1800 packages.</p>
+Rien que sur le CRAN (Comprehensive R Archive Network) on peut trouver plus de 18000 packages.</p>
 <p>Dans le chapitre suivant nous allons voir les bases de la programmation avec R en utilisant le logiciel <a href="https://www.rstudio.com/">RStudio</a>.</p>
 
 </div>

@@ -11,8 +11,8 @@ L’interface RStudio se présente ainsi par défaut. Nous pouvons voir une cons
 
 * La _console_ peut servir à écrire une ligne d’instruction qui sera exécutée en appuyant sur Entrer.  
 * La partie dédiée au _scripts_ permet d'écrire un ensemble de lignes de codes   qui peuvent être exécutées par ordre voulu par l’utilisateur. En plus des     scripts, on peut y visualiser nos tableaux de données qui sont décrits dans   la section \@ref(dataframe).  
-* Les graphes peuvent être visibles dans la partie _Plots_ de notre interface. Cette partie est un panneau contenant les onglets _Viewer_ pour les pages     html, _Files_ pour naviguer dans les fichiers, _Packages_ pour gérer les packages installes et _Help_ pour chercher de l’aide.  
-* La dernière partie c’est à dire _Environment_ est consacrée à la gestion de l'environnement de travail. Elle permet de voir les variable créé lors de     notre session mais aussi d’avoir une idée sur leur structure
+* Les graphes peuvent être visibles dans la partie _Plots_ de notre interface. Cette partie est un panneau contenant les onglets _Viewer_ pour les pages     html, _Files_ pour naviguer dans les fichiers, _Packages_ pour gérer les packages installés et _Help_ pour chercher de l’aide.  
+* La dernière partie c’est à dire _Environment_ est consacrée à la gestion de l'environnement de travail. Elle permet de voir les variables créés lors de     notre session mais aussi d’avoir une idée sur leur structure
 
 
 ## Premiers codes{#firstcode}
@@ -25,7 +25,7 @@ Dans la section précédente nous avons présenté brièvement l’interface de 
 #> [1] 5
 ```
 Le résultat obtenu est tout naturellement `5`. Vous constatez que `[1]` précède le résultat de l'opération, en effet l’affichage se fait par défaut sous forme d’une liste\@ref(list).  
-La console peut être utilisée comme une calculatrice et supporte toute les opération arithmétique telle que la soustraction(`-`), l’addition(`+`), la multiplication(`*`), la division décimale(`/`), la division entière(`%/%`), le modulo^[modulo : Cet opérateur renvoi le reste de la division entre deux nombres] (`%%`).  
+La console peut être utilisée comme une calculatrice et supporte toutes les opérations arithmétiques telles que la soustraction(`-`), l’addition(`+`), la multiplication(`*`), la division décimale(`/`), la division entière(`%/%`), le modulo^[modulo : Cet opérateur renvoi le reste de la division entre deux nombres] (`%%`).  
 Le symbole (`#`) sert à écrire une ligne de commentaire.
 
 ```r
@@ -60,7 +60,7 @@ Le vecteur est un objet de base de R qui correspond à une liste d'éléments. S
 
 * Dimension unitaire (les vecteurs sont unidimensionnel)  
 * Éléments de même type (Toutes les valeurs contenues dans un vecteur sont de même type)  
-* Longueure égale au nombre d’éléments 
+* Longueur égale au nombre d’éléments 
 
 #### Création{-}
 La fonction la plus classique pour créer un vecteur est `c(...)`. Elle prend comme argument les éléments du vecteur. Dans le code suivant, nous allons créer un vecteur contenant les valeurs de 1 jusqu’à 5 puis nous allons le nommer `myvector`
@@ -83,7 +83,7 @@ myvector[-1]
 #> [1] 2 3 4 5
 ```
 
-Il se peut qu’on veuille créer une séquence de valeurs avec un pas spécifié. Un exemple concret c’est de vouloir créer un vecteur nommé `evenVector` contenant tous les nombres pairs compris entre 0 et 100. L’utilisation de la fonction `c()` rendrait le travail fastidieux. La fonction `seq()` est plus adaptée à notre situation. Elle prend comme argument fom(le début de la séquence), to(la fin de la séquence), by(le pas de la séquence), etc. Pour en savoir plus vous pouvez exécuter la commande `?seq()`.
+Il se peut qu’on veuille créer une séquence de valeurs avec un pas spécifié. Un exemple concret c’est de vouloir créer un vecteur nommé `evenVector` contenant tous les nombres pairs compris entre 0 et 100. L’utilisation de la fonction `c()` rendrait le travail fastidieux. La fonction `seq()` est plus adaptée à notre situation. Elle prend comme argument from(le début de la séquence), to(la fin de la séquence), by(le pas de la séquence), etc. Pour en savoir plus vous pouvez exécuter la commande `?seq()`.
 
 ```r
 evenVector <- seq(from = 0, to = 100, by = 2) #Création 
@@ -186,7 +186,7 @@ mylist
 ### Matrice
 #### Définition{-}
 
-Un matrice est un un tableau dont les colonnes sont des vecteurs de même type et de même taille. Autrement dit, la matrice est un objet de deux dimensions dont tous les éléments sont de type homogène. R ne considère pas un vecteur comme une matrice colonne ou ligne, ce sont deux types de structures différentes.
+Une matrice est un un tableau dont les colonnes sont des vecteurs de même type et de même taille. Autrement dit, la matrice est un objet de deux dimensions dont tous les éléments sont de type homogène. R ne considère pas un vecteur comme une matrice colonne ou ligne, ce sont deux types de structures différentes.
 
 #### Création{-}
 Une matrice colonne se crée avec la fonction `cbind()` et la matrice ligne par `rbind()`. Pour créer une matrice de plusieurs colonnes on utilise la fonction `matrix()`.
@@ -251,7 +251,7 @@ Matrix[,2]
 Un tableau de données (data frame) est comme la matrice, un objet de deux dimensions sauf qu’il peut contenir des colonnes de types différents. Chaque colonne doit contenir des éléments de même type. La data.frame est un objet très utilisé sur R et ce sera le cas dans les chapitres suivants de ce livre.
 
 #### Création{-}
-La fonction `data.frame()` permet de créer un un tableau de données. Elle prend en argument des vecteurs de même longueur. Il en existe d’autres arguments pour cette fonction, pour en savoir plus vous pouvez exécuter `?data.frame()`.
+La fonction `data.frame()` permet de créer un tableau de données. Elle prend en argument des vecteurs de même longueur. Il en existe d’autres arguments pour cette fonction, pour en savoir plus vous pouvez exécuter `?data.frame()`.
 
 ```r
 x = c(12,67,13)
@@ -264,7 +264,7 @@ tableau
 #> 3 13 C
 ```
 
-L'accès à un élément peut se faire de la même manière qu’avec les matrices. Pour accéder à une colonne par son nom on utilise le symbole `$` comme dans la section liste. Les codes suivants permettent d'accéder à l'élément “B” de `tableau` de plusieurs façons.
+L'accès à un élément peut se faire de la même manière qu’avec les matrices. Pour accéder à une colonne par son nom on utilise le symbole `$` comme dans la section liste. Les codes suivants permettent d'accéder à l'élément “B” du `tableau` de plusieurs façons.
 
 ```r
 #Indexiation
@@ -296,7 +296,7 @@ for (variable in vector) {
 }
 ```
 
-Un exemple de création d'un vecteur de 5 éléments contenant les carré des nombre compris entre 1 et 5
+Un exemple de création d'un vecteur de 5 éléments contenant les carrés des nombre compris entre 1 et 5
 
 ```r
 #Initialisation
@@ -387,4 +387,4 @@ addition(10,4)
 
 ## Liens utils{-}
 @base  
-https://cran.r-project.org/doc/contrib/Paradis-rdebuts_fr.pdf
+<https://cran.r-project.org/doc/contrib/Paradis-rdebuts_fr.pdf>
