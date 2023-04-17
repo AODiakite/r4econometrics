@@ -1,0 +1,14 @@
+name: r4econometrics3
+title: r4econometrics
+username: AODiakite
+account: AODiakite
+server: bookdown.org
+hostUrl: https://bookdown.org/__api__
+appId: 12161
+bundleId: 84124
+url: https://bookdown.org/AODiakite/r4econometrics3/
+when: 1681691570.37079
+lastSyncTime: 1681691570.3708
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: 01-Start-R.Rmd|02-bases-R.Rmd|03-simple-lm.Rmd|04-multiple-lm.Rmd|05-glm.Rmd|06-one-way-anova.Rmd|07-two-way-anova.Rmd|08-ancova.Rmd|09-Intro-ts.Rmd|10-trend-and-seasonality.Rmd|11-proc-stat.Rmd|12-proc-non-stat.Rmd|13-arch-garch.Rmd|999-references.Rmd|Data/.DS_Store

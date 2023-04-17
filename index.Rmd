@@ -4,7 +4,7 @@ author: "Abdoul Oudouss Diakite"
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 twitter-handle: abdouloudouss
-github-repo: AODiakite/r4eco
+github-repo: AODiakite/r4econometrics
 documentclass: book
 bibliography: [book.bib, packages.bib]
 # url: your book url like https://bookdown.org/yihui/bookdown

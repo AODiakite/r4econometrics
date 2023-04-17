@@ -42,8 +42,7 @@ Table: (\#tab:unnamed-chunk-3)Données pour la régression linéaire simple : in
 
 ## Modélisation mathématique
 
-L'ajustement affine de $y$ par $X$ stipule que que y peut s'écrire comme
-équation d'une droite :
+L'ajustement affine de $y$ par $X$ stipule que $y$ peut s'écrire comme équation d'une droite :
 
 ```{=tex}
 \begin{equation}
@@ -120,7 +119,7 @@ fig1
 
 La problématique du modèle\@ref(eq:lm-simple), c'est de trouver les
 coefficients $\beta_i$ qui donnent un meilleur ajustement linéaire de
-$y$. Pour cela on a recours aux estimateurs des moindres qui carrés.
+$y$. Pour cela on a recours aux estimateurs des moindres carrés.
 Cette méthode consiste à trouver les coefficients qui minimise la
 quantité :
 
@@ -250,7 +249,7 @@ avec la fonction `geom_smooth()`. Nous allons l'ajouter à notre objet
 fig1 = ggplot(data = income,aes(x =income, y = happiness)) +
                geom_point() + geom_smooth(method = "lm")
 fig1
-#> `geom_smooth()` using formula 'y ~ x'
+#> `geom_smooth()` using formula = 'y ~ x'
 ```
 
 <div class="figure" style="text-align: center">
